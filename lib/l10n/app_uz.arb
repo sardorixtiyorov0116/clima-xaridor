@@ -1,0 +1,439 @@
+{
+  "@@locale": "uz",
+  "appName": "Climavent",
+  "tagline": "Ventilyatsiya va konditsioner uskunalari",
+  "langTitle": "Tilni tanlang",
+  "langSubtitle": "Keyinroq profil sozlamalarida oʻzgartirish mumkin",
+  "continueAction": "Davom etish",
+  "onb1Title": "Ishlab chiqaruvchidan toʻgʻridan-toʻgʻri",
+  "onb1Body": "Ventilyatorlar, konditsionerlar, havo kanallari — Oʻzbekistondagi zavod va doʻkonlardan.",
+  "onb2Title": "Tijorat taklifi bir zumda",
+  "onb2Body": "Savatga soling va sotib olishdan oldin KP ni PDF qilib oling — rahbariyatga tasdiqlatish uchun.",
+  "onb3Title": "Yetkazishni jonli kuzating",
+  "onb3Body": "Kuryer qayerda va qachon yetib kelishini xaritada koʻrasiz.",
+  "onbNext": "Keyingisi",
+  "onbStart": "Boshlash",
+  "onbSkip": "Oʻtkazib yuborish",
+  "phoneTitle": "Telefon raqamingiz",
+  "phoneSubtitle": "Kirish yoki roʻyxatdan oʻtish uchun SMS orqali kod yuboramiz",
+  "phoneLabel": "Telefon raqami",
+  "phoneInvalid": "Raqamni toʻliq kiriting: 9 ta raqam",
+  "getCode": "Kodni olish",
+  "later": "Keyinroq",
+  "phoneFooter": "Davom etib, siz SMS olishga rozilik bildirasiz. Standart operator tarifi.",
+  "consentTitle": "Siz bizda yangisiz",
+  "consentBody": "Hisob yaratish uchun shartlar bilan tanishib chiqing va rozilik bering.",
+  "consentPrefix": "Men ",
+  "consentTerms": "Foydalanish shartlari",
+  "consentAnd": " va ",
+  "consentPrivacy": "Maxfiylik siyosati",
+  "consentSuffix": " bilan tanishdim va roziman",
+  "consentAccept": "Roziman, kodni yuborish",
+  "otpTitle": "Kodni kiriting",
+  "otpSubtitle": "{phone} raqamiga 5 xonali kod yubordik",
+  "@otpSubtitle": {
+    "placeholders": {
+      "phone": {
+        "type": "String"
+      }
+    }
+  },
+  "otpChangeNumber": "Raqamni oʻzgartirish",
+  "otpResendIn": "Kodni qayta yuborish: {time}",
+  "@otpResendIn": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "otpResend": "Kodni qayta yuborish",
+  "otpResent": "Yangi kod yuborildi",
+  "otpWrong": "Kod notoʻgʻri. Qaytadan urinib koʻring",
+  "otpExpired": "Kodning muddati tugadi. Yangisini soʻrang",
+  "otpVerifying": "Tekshirilmoqda…",
+  "profileSetupTitle": "Tanishib olaylik",
+  "profileSetupSubtitle": "Ismingiz buyurtma va tijorat takliflarida koʻrsatiladi",
+  "firstName": "Ism",
+  "lastName": "Familiya",
+  "firstNameRequired": "Ismingizni kiriting",
+  "save": "Saqlash",
+  "welcome": "Xush kelibsiz, {name}!",
+  "@welcome": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "welcomeNoName": "Xush kelibsiz!",
+  "tabHome": "Bosh sahifa",
+  "tabCatalog": "Katalog",
+  "tabCart": "Savat",
+  "tabOrders": "Buyurtmalar",
+  "tabProfile": "Profil",
+  "searchHint": "Mahsulot yoki model qidirish",
+  "soonTitle": "Tez orada",
+  "soonCatalog": "Katalog shu yerda boʻladi: mahsulotlar, modellar va filtrlar.",
+  "soonCart": "Savatdan sotib olish yoki KP olish — ikkalasi ham bir tugmada.",
+  "soonOrders": "Buyurtmalar, KP lar va yetkazishni kuzatish shu yerda.",
+  "homeHeroTitle": "Ilova ishga tushmoqda",
+  "homeHeroBody": "Birinchi bosqich — kirish va hisob. Katalog, savat va kuzatish navbatda.",
+  "guestTitle": "Hisobingizga kiring",
+  "guestBody": "Buyurtmalar, tijorat takliflari va yetkazish holati bir joyda",
+  "signIn": "Kirish",
+  "settingsLanguage": "Til",
+  "settingsTheme": "Mavzu",
+  "themeSystem": "Tizim boʻyicha",
+  "themeLight": "Yorugʻ",
+  "themeDark": "Qorongʻi",
+  "settingsTerms": "Foydalanish shartlari",
+  "settingsPrivacy": "Maxfiylik siyosati",
+  "settingsSupport": "Qoʻllab-quvvatlash",
+  "signOut": "Chiqish",
+  "signOutConfirm": "Hisobdan chiqasizmi?",
+  "cancel": "Bekor qilish",
+  "version": "Versiya {v}",
+  "@version": {
+    "placeholders": {
+      "v": {
+        "type": "String"
+      }
+    }
+  },
+  "errNetwork": "Internet bilan aloqa yoʻq. Ulanishni tekshiring",
+  "errServer": "Serverda xatolik. Birozdan keyin urinib koʻring",
+  "errTooMany": "Urinishlar juda koʻp. Birozdan keyin qayta urinib koʻring",
+  "errUnknown": "Kutilmagan xatolik yuz berdi",
+  "retry": "Qayta urinish",
+  "priceSum": "{sum} soʻm",
+  "@priceSum": {
+    "placeholders": {
+      "sum": {
+        "type": "String"
+      }
+    }
+  },
+  "priceFrom": "{price} dan",
+  "@priceFrom": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "priceOnRequest": "Narxini bilish",
+  "priceOnRequestHint": "Savatga qoʻshing va KP oling — narxni sotuvchi 1 ish kuni ichida beradi",
+  "saleTag": "Aksiya",
+  "homeSale": "Aksiyadagi mahsulotlar",
+  "homeNew": "Yangi qoʻshilganlar",
+  "homePopular": "Ommabop",
+  "emptyCategory": "Bu boʻlimda hozircha mahsulot yoʻq",
+  "allItems": "Hammasi",
+  "pricedOnly": "Narxi borlar",
+  "sortTitle": "Saralash",
+  "sortPopular": "Ommabop",
+  "sortCheap": "Arzonroq",
+  "sortExpensive": "Qimmatroq",
+  "sortNew": "Yangilari",
+  "searchNothing": "Hech narsa topilmadi",
+  "searchNothingHint": "Boshqa soʻz yoki model nomini yozib koʻring",
+  "searchFound": "{count} ta mahsulot",
+  "@searchFound": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "searchStartHint": "Mahsulot nomi, model yoki artikul boʻyicha qidiring: masalan, «ВЦ 4-75» yoki «kanal ventilyatori»",
+  "searchRecent": "Oxirgi qidiruvlar",
+  "clear": "Tozalash",
+  "modelsCount": "{count} ta model",
+  "@modelsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "chooseModel": "Modelni tanlang",
+  "modelLabel": "Model",
+  "variantsTitle": "Variantlar",
+  "descriptionTitle": "Tavsif",
+  "purposeTitle": "Qoʻllanilishi",
+  "sellerTitle": "Sotuvchi",
+  "callSeller": "Qoʻngʻiroq",
+  "addToCart": "Savatga",
+  "chooseModelFirst": "Avval modelni tanlang",
+  "addedToCart": "Savatga qoʻshildi",
+  "goToCart": "Savatga oʻtish",
+  "cartEmptyTitle": "Savat boʻsh",
+  "cartEmptyBody": "Mahsulotlarni savatga soling — keyin sotib olasiz yoki KP olasiz",
+  "goToCatalog": "Katalogga oʻtish",
+  "cartClearConfirm": "Savatni tozalaysizmi?",
+  "cartTotal": "Jami",
+  "cartUnpriced": "+ {count} ta mahsulot narxini sotuvchi beradi",
+  "@cartUnpriced": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "checkoutOrder": "Buyurtma berish",
+  "checkoutQuote": "KP olish",
+  "checkoutSoonTitle": "Rasmiylashtirish keyingi versiyada",
+  "checkoutSoonBody": "Buyurtma berish va KP olish ilovaning keyingi versiyasida qoʻshiladi. Savatingiz shu telefonda saqlanib turadi.",
+  "understood": "Tushunarli",
+  "favoritesTitle": "Sevimlilar",
+  "favoritesEmptyTitle": "Sevimlilar roʻyxati boʻsh",
+  "favoritesEmptyBody": "Mahsulotdagi ♡ belgisini bosing — u shu yerda saqlanadi",
+  "sizesTitle": "Oʻlchamlar",
+  "markingTitle": "Belgilanishi",
+  "chooseVariant": "Variantni tanlang",
+  "chooseVariantFirst": "Avval variantni tanlang",
+  "specsTitle": "Xarakteristikalar",
+  "specsChooseModel": "Modelni tanlang — uning texnik xarakteristikalari shu yerda chiqadi",
+  "specAirflow": "Havo sarfi",
+  "specPressure": "Bosim",
+  "checkoutOrderTitle": "Buyurtmani rasmiylashtirish",
+  "checkoutQuoteTitle": "KP soʻrovi",
+  "checkoutQuoteNote": "Sotuvchi narxlarni 1 ish kuni ichida yuboradi. KP tayyor boʻlganda SMS keladi va uni «Buyurtmalar» boʻlimida koʻrasiz.",
+  "checkoutLoginTitle": "Davom etish uchun kiring",
+  "checkoutLoginBody": "Buyurtma va KP hisobingizga bogʻlanadi — holatini ilovada kuzatasiz",
+  "deliveryAddress": "Yetkazish manzili",
+  "deliveryAddressOptional": "Yetkazish manzili (ixtiyoriy)",
+  "addressLabel": "Manzil",
+  "addressRequired": "Manzilni kiriting yoki xaritada belgilang",
+  "addressDetailsLabel": "Kirish, qavat, xonadon, moʻljal",
+  "recipientTitle": "Qabul qiluvchi",
+  "recipientName": "Ism va familiya",
+  "companyTitle": "Kompaniya (ixtiyoriy)",
+  "companyName": "Kompaniya nomi",
+  "companyTin": "STIR",
+  "companyTinInvalid": "STIR 9 ta raqamdan iborat",
+  "commentTitle": "Izoh",
+  "commentHint": "Masalan: montaj bilan, yuk koʻtaruvchi kerak",
+  "sendQuoteRequest": "KP soʻrovini yuborish",
+  "confirmOrder": "Buyurtmani tasdiqlash",
+  "paymentNote": "Toʻlov sotuvchiga: bank oʻtkazmasi, karta yoki naqd. Sotuvchi siz bilan bogʻlanib, yetkazish va toʻlovni kelishadi.",
+  "mapPick": "Xaritada belgilash",
+  "mapChange": "Oʻzgartirish",
+  "mapMoving": "Joyni tanlang…",
+  "mapLoadingAddress": "Manzil aniqlanmoqda…",
+  "mapConfirm": "Shu manzil",
+  "locationOff": "Telefonda joylashuv oʻchiq",
+  "locationDenied": "Joylashuvga ruxsat berilmadi",
+  "locationFailed": "Joylashuvni aniqlab boʻlmadi",
+  "doneOrderTitle": "Buyurtma qabul qilindi",
+  "doneQuoteTitle": "KP soʻrovi yuborildi",
+  "doneOrderBody": "Sotuvchi tez orada siz bilan bogʻlanib, yetkazish va toʻlovni kelishadi.",
+  "doneQuoteBody": "Sotuvchi narxlarni 1 ish kuni ichida yuboradi. KP tayyor boʻlganda SMS keladi.",
+  "myOrders": "Buyurtmalarim",
+  "continueShopping": "Xaridni davom ettirish",
+  "ordersLoginTitle": "Buyurtmalaringiz shu yerda",
+  "ordersLoginBody": "Kiring — buyurtmalar, KP lar va yetkazish holatini koʻrasiz",
+  "ordersEmptyTitle": "Hali buyurtma yoʻq",
+  "ordersEmptyBody": "Katalogdan mahsulot tanlang — buyurtma yoki KP shu yerda paydo boʻladi",
+  "quoteLabel": "KP",
+  "orderLabel": "Buyurtma",
+  "priceAwaited": "Narx kutilmoqda",
+  "statusNew": "Yangi",
+  "statusQuotePending": "Sotuvchi narx bermoqda",
+  "statusQuoteReady": "KP tayyor",
+  "statusPaid": "Toʻlangan",
+  "statusShipping": "Yetkazilmoqda",
+  "statusDone": "Yakunlangan",
+  "statusCancelled": "Bekor qilingan",
+  "itemsCount": "{count} ta mahsulot",
+  "@itemsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "moreItems": "yana {count} ta",
+  "@moreItems": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "checkoutSplit": "Mahsulotlar {count} ta doʻkondan — har biriga alohida buyurtma yuboriladi",
+  "@checkoutSplit": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "doneNumbers": "Raqam: {numbers}",
+  "@doneNumbers": {
+    "placeholders": {
+      "numbers": {
+        "type": "String"
+      }
+    }
+  },
+  "checkoutPartial": "{ids} yuborildi, qolganini yuborib boʻlmadi — qayta urinib koʻring",
+  "@checkoutPartial": {
+    "placeholders": {
+      "ids": {
+        "type": "String"
+      }
+    }
+  },
+  "chooseOptions": "Tanlash",
+  "searchInList": "Roʻyxatdan qidirish",
+  "bannerMore": "Batafsil",
+  "inCartCount": "Savatda · {count}",
+  "@inCartCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "pdfFailed": "PDF tayyorlab boʻlmadi. Internetni tekshirib, qayta urinib koʻring",
+  "kpTitle": "Tijorat taklifi",
+  "kpDate": "Sana",
+  "kpValidUntil": "Amal qiladi",
+  "kpSeller": "Sotuvchi",
+  "kpBuyer": "Xaridor",
+  "kpColProduct": "Mahsulot",
+  "kpColQty": "Soni",
+  "kpColPrice": "Narxi, soʻm",
+  "kpColSum": "Summa, soʻm",
+  "kpUnpricedCell": "narxini sotuvchi beradi",
+  "kpDeliveryTerms": "Yetkazish",
+  "kpPaymentTerms": "Toʻlov",
+  "kpDisclaimer": "Narxlar sanadagi kurs boʻyicha. Yakuniy shartlar sotuvchi bilan kelishiladi. Ushbu hujjat ommaviy oferta emas.",
+  "kpDownloadPdf": "PDF yuklab olish",
+  "kpAccept": "Qabul qilaman — buyurtma berish",
+  "kpAcceptConfirmTitle": "KP ni qabul qilasizmi?",
+  "kpAccepted": "KP qabul qilindi — buyurtma rasmiylashtirildi",
+  "kpReject": "Rad etish",
+  "kpRejectTitle": "KP ni rad etish",
+  "kpRejectHint": "Sababi (ixtiyoriy): masalan, qimmat",
+  "kpRejected": "KP rad etildi",
+  "kpRequestAgain": "Yangisini olish",
+  "kpRequestedAgain": "Soʻrov sotuvchiga yuborildi",
+  "kpPreparing": "Sotuvchi KP tayyorlayapti — odatda 1 ish kuni. Tayyor boʻlganda SMS keladi.",
+  "kpExpired": "KP muddati oʻtgan — yangisini soʻrang",
+  "statusQuoteExpired": "KP eskirgan",
+  "kpAcceptConfirmBody": "Jami {total}. Sotuvchi siz bilan bogʻlanib, yetkazish va toʻlovni kelishadi.",
+  "@kpAcceptConfirmBody": {
+    "placeholders": {
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "kpPartial": "Sotuvchi {count} ta mahsulotga narx tayyorlayapti — KP toʻliq boʻlganda SMS keladi",
+  "@kpPartial": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "kpIssueNow": "KP hujjatini hozir olish",
+  "kpIssued": "KP tayyor — narxli mahsulotlar hujjatda",
+  "kpTo": "Kimga:",
+  "kpToHead": "Rahbariga:",
+  "kpColName": "Nomi",
+  "kpColUnit": "Oʻlch. birl.",
+  "kpColUnitPrice": "Dona narxi",
+  "kpColAmount": "Summa",
+  "kpColVat": "QQS 12%",
+  "kpColTotalVat": "QQS bilan summa",
+  "kpUnit": "dona",
+  "kpTotalRow": "Jami:",
+  "kpRegards": "Hurmat bilan,",
+  "kpVatNote": "Narxlar QQS 12% bilan, soʻmda.",
+  "kpDated": "{date} y.",
+  "@kpDated": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "kpIntro": "{seller} buyurtmangiz boʻyicha quyidagi uskunalarni yetkazib bera oladi:",
+  "@kpIntro": {
+    "placeholders": {
+      "seller": {
+        "type": "String"
+      }
+    }
+  },
+  "kpValidRange": "*Mahsulot narxlari {from} dan {to} gacha amal qiladi",
+  "@kpValidRange": {
+    "placeholders": {
+      "from": {
+        "type": "String"
+      },
+      "to": {
+        "type": "String"
+      }
+    }
+  },
+  "kpDirectorOf": "{company} direktori",
+  "@kpDirectorOf": {
+    "placeholders": {
+      "company": {
+        "type": "String"
+      }
+    }
+  },
+  "kpHeadOf": "{company} rahbari",
+  "@kpHeadOf": {
+    "placeholders": {
+      "company": {
+        "type": "String"
+      }
+    }
+  },
+  "specsEmpty": "Xarakteristikasi yoʻq",
+  "variantsCount": "{count} ta variant",
+  "@variantsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "orderItemsSummary": "{name} va yana {count} ta",
+  "@orderItemsSummary": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "piecesCount": "{count} dona",
+  "@piecesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "priceSheetBody": "Sotuvchi narxni KP orqali 1 ish kuni ichida beradi. Tezroq kerak boʻlsa — qoʻngʻiroq qiling yoki Telegramda yozing.",
+  "priceSheetQuote": "KP olish — narxni 1 ish kunida beramiz",
+  "priceSheetTelegram": "Telegramda yozish",
+  "priceSheetCall": "Qoʻngʻiroq · {store}",
+  "@priceSheetCall": {
+    "placeholders": {
+      "store": {
+        "type": "String"
+      }
+    }
+  }
+}

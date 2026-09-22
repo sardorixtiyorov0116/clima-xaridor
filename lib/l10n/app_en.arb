@@ -1,0 +1,439 @@
+{
+  "@@locale": "en",
+  "appName": "Climavent",
+  "tagline": "Ventilation and air conditioning equipment",
+  "langTitle": "Choose your language",
+  "langSubtitle": "You can change it later in profile settings",
+  "continueAction": "Continue",
+  "onb1Title": "Straight from the manufacturer",
+  "onb1Body": "Fans, air conditioners, ductwork — from factories and stores across Uzbekistan.",
+  "onb2Title": "A quote in seconds",
+  "onb2Body": "Add to cart and download a PDF quote before you buy — ready for your manager's approval.",
+  "onb3Title": "Track your delivery live",
+  "onb3Body": "See on the map where the courier is and when they'll arrive.",
+  "onbNext": "Next",
+  "onbStart": "Get started",
+  "onbSkip": "Skip",
+  "phoneTitle": "Your phone number",
+  "phoneSubtitle": "We'll text you a code to sign in or create an account",
+  "phoneLabel": "Phone number",
+  "phoneInvalid": "Enter the full number: 9 digits",
+  "getCode": "Get code",
+  "later": "Later",
+  "phoneFooter": "By continuing you agree to receive an SMS. Standard carrier rates apply.",
+  "consentTitle": "You're new here",
+  "consentBody": "To create an account, please review and accept our terms.",
+  "consentPrefix": "I have read and agree to the ",
+  "consentTerms": "Terms of Use",
+  "consentAnd": " and ",
+  "consentPrivacy": "Privacy Policy",
+  "consentSuffix": "",
+  "consentAccept": "Agree and send code",
+  "otpTitle": "Enter the code",
+  "otpSubtitle": "We sent a 5-digit code to {phone}",
+  "@otpSubtitle": {
+    "placeholders": {
+      "phone": {
+        "type": "String"
+      }
+    }
+  },
+  "otpChangeNumber": "Change number",
+  "otpResendIn": "Resend code in {time}",
+  "@otpResendIn": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "otpResend": "Resend code",
+  "otpResent": "A new code has been sent",
+  "otpWrong": "Incorrect code. Please try again",
+  "otpExpired": "The code has expired. Request a new one",
+  "otpVerifying": "Verifying…",
+  "profileSetupTitle": "Let's get acquainted",
+  "profileSetupSubtitle": "Your name appears on orders and quotes",
+  "firstName": "First name",
+  "lastName": "Last name",
+  "firstNameRequired": "Enter your first name",
+  "save": "Save",
+  "welcome": "Welcome, {name}!",
+  "@welcome": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "welcomeNoName": "Welcome!",
+  "tabHome": "Home",
+  "tabCatalog": "Catalog",
+  "tabCart": "Cart",
+  "tabOrders": "Orders",
+  "tabProfile": "Profile",
+  "searchHint": "Search products or models",
+  "soonTitle": "Coming soon",
+  "soonCatalog": "The catalog lives here: products, models and filters.",
+  "soonCart": "Buy or get a quote from your cart — one tap either way.",
+  "soonOrders": "Orders, quotes and delivery tracking — all here.",
+  "homeHeroTitle": "The app is launching",
+  "homeHeroBody": "Stage one is sign-in and account. Catalog, cart and tracking are next.",
+  "guestTitle": "Sign in to your account",
+  "guestBody": "Orders, quotes and delivery status in one place",
+  "signIn": "Sign in",
+  "settingsLanguage": "Language",
+  "settingsTheme": "Theme",
+  "themeSystem": "System",
+  "themeLight": "Light",
+  "themeDark": "Dark",
+  "settingsTerms": "Terms of Use",
+  "settingsPrivacy": "Privacy Policy",
+  "settingsSupport": "Support",
+  "signOut": "Sign out",
+  "signOutConfirm": "Sign out of your account?",
+  "cancel": "Cancel",
+  "version": "Version {v}",
+  "@version": {
+    "placeholders": {
+      "v": {
+        "type": "String"
+      }
+    }
+  },
+  "errNetwork": "No internet connection. Check your network",
+  "errServer": "Server error. Please try again shortly",
+  "errTooMany": "Too many attempts. Please try again later",
+  "errUnknown": "Something went wrong",
+  "retry": "Retry",
+  "priceSum": "{sum} UZS",
+  "@priceSum": {
+    "placeholders": {
+      "sum": {
+        "type": "String"
+      }
+    }
+  },
+  "priceFrom": "from {price}",
+  "@priceFrom": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "priceOnRequest": "Get price",
+  "priceOnRequestHint": "Add to cart and get a quote — the seller will price it within 1 business day",
+  "saleTag": "Sale",
+  "homeSale": "On sale",
+  "homeNew": "New arrivals",
+  "homePopular": "Popular",
+  "emptyCategory": "No products in this section yet",
+  "allItems": "All",
+  "pricedOnly": "With price",
+  "sortTitle": "Sort by",
+  "sortPopular": "Popular",
+  "sortCheap": "Price: low to high",
+  "sortExpensive": "Price: high to low",
+  "sortNew": "Newest",
+  "searchNothing": "Nothing found",
+  "searchNothingHint": "Try another word or a model name",
+  "searchFound": "{count} products",
+  "@searchFound": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "searchStartHint": "Search by name, model or SKU, e.g. “VTs 4-75” or “duct fan”",
+  "searchRecent": "Recent searches",
+  "clear": "Clear",
+  "modelsCount": "{count} models",
+  "@modelsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "chooseModel": "Choose a model",
+  "modelLabel": "Model",
+  "variantsTitle": "Variants",
+  "descriptionTitle": "Description",
+  "purposeTitle": "Applications",
+  "sellerTitle": "Seller",
+  "callSeller": "Call",
+  "addToCart": "Add to cart",
+  "chooseModelFirst": "Choose a model first",
+  "addedToCart": "Added to cart",
+  "goToCart": "Go to cart",
+  "cartEmptyTitle": "Your cart is empty",
+  "cartEmptyBody": "Add products — then buy or get a quote",
+  "goToCatalog": "Browse catalog",
+  "cartClearConfirm": "Clear the cart?",
+  "cartTotal": "Total",
+  "cartUnpriced": "+ {count} items priced by the seller",
+  "@cartUnpriced": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "checkoutOrder": "Place order",
+  "checkoutQuote": "Get a quote",
+  "checkoutSoonTitle": "Checkout is coming next",
+  "checkoutSoonBody": "Ordering and quotes arrive in the next app version. Your cart stays saved on this phone.",
+  "understood": "Got it",
+  "favoritesTitle": "Favorites",
+  "favoritesEmptyTitle": "No favorites yet",
+  "favoritesEmptyBody": "Tap ♡ on a product to save it here",
+  "sizesTitle": "Dimensions",
+  "markingTitle": "Designation",
+  "chooseVariant": "Choose a variant",
+  "chooseVariantFirst": "Choose a variant first",
+  "specsTitle": "Specifications",
+  "specsChooseModel": "Choose a model to see its specifications",
+  "specAirflow": "Airflow",
+  "specPressure": "Pressure",
+  "checkoutOrderTitle": "Checkout",
+  "checkoutQuoteTitle": "Quote request",
+  "checkoutQuoteNote": "The seller will send prices within 1 business day. You'll get an SMS when the quote is ready — it will appear under Orders.",
+  "checkoutLoginTitle": "Sign in to continue",
+  "checkoutLoginBody": "Orders and quotes are linked to your account so you can track them",
+  "deliveryAddress": "Delivery address",
+  "deliveryAddressOptional": "Delivery address (optional)",
+  "addressLabel": "Address",
+  "addressRequired": "Enter an address or pick it on the map",
+  "addressDetailsLabel": "Entrance, floor, apartment, landmark",
+  "recipientTitle": "Recipient",
+  "recipientName": "Full name",
+  "companyTitle": "Company (optional)",
+  "companyName": "Company name",
+  "companyTin": "TIN",
+  "companyTinInvalid": "TIN must be 9 digits",
+  "commentTitle": "Comment",
+  "commentHint": "E.g. with installation, loaders needed",
+  "sendQuoteRequest": "Send quote request",
+  "confirmOrder": "Confirm order",
+  "paymentNote": "Payment goes to the seller: bank transfer, card or cash. The seller will contact you to arrange delivery and payment.",
+  "mapPick": "Pick on map",
+  "mapChange": "Change",
+  "mapMoving": "Choose the spot…",
+  "mapLoadingAddress": "Finding address…",
+  "mapConfirm": "Use this address",
+  "locationOff": "Location is turned off",
+  "locationDenied": "Location permission denied",
+  "locationFailed": "Couldn't get your location",
+  "doneOrderTitle": "Order placed",
+  "doneQuoteTitle": "Quote request sent",
+  "doneOrderBody": "The seller will contact you shortly to arrange delivery and payment.",
+  "doneQuoteBody": "The seller will send prices within 1 business day. You'll get an SMS when it's ready.",
+  "myOrders": "My orders",
+  "continueShopping": "Continue shopping",
+  "ordersLoginTitle": "Your orders live here",
+  "ordersLoginBody": "Sign in to see orders, quotes and delivery status",
+  "ordersEmptyTitle": "No orders yet",
+  "ordersEmptyBody": "Pick products in the catalog — orders and quotes will show up here",
+  "quoteLabel": "Quote",
+  "orderLabel": "Order",
+  "priceAwaited": "Awaiting price",
+  "statusNew": "New",
+  "statusQuotePending": "Seller is pricing",
+  "statusQuoteReady": "Quote ready",
+  "statusPaid": "Paid",
+  "statusShipping": "On the way",
+  "statusDone": "Completed",
+  "statusCancelled": "Cancelled",
+  "itemsCount": "{count} items",
+  "@itemsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "moreItems": "+{count} more",
+  "@moreItems": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "checkoutSplit": "Items from {count} stores — a separate order goes to each",
+  "@checkoutSplit": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "doneNumbers": "Number: {numbers}",
+  "@doneNumbers": {
+    "placeholders": {
+      "numbers": {
+        "type": "String"
+      }
+    }
+  },
+  "checkoutPartial": "{ids} sent, the rest failed — please try again",
+  "@checkoutPartial": {
+    "placeholders": {
+      "ids": {
+        "type": "String"
+      }
+    }
+  },
+  "chooseOptions": "Choose",
+  "searchInList": "Search the list",
+  "bannerMore": "Details",
+  "inCartCount": "In cart · {count}",
+  "@inCartCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "pdfFailed": "Couldn't prepare the PDF. Check your connection and try again",
+  "kpTitle": "Commercial proposal",
+  "kpDate": "Date",
+  "kpValidUntil": "Valid until",
+  "kpSeller": "Seller",
+  "kpBuyer": "Buyer",
+  "kpColProduct": "Product",
+  "kpColQty": "Qty",
+  "kpColPrice": "Price, UZS",
+  "kpColSum": "Amount, UZS",
+  "kpUnpricedCell": "priced by seller",
+  "kpDeliveryTerms": "Delivery",
+  "kpPaymentTerms": "Payment",
+  "kpDisclaimer": "Prices at the exchange rate of the date. Final terms are agreed with the seller. This document is not a public offer.",
+  "kpDownloadPdf": "Download PDF",
+  "kpAccept": "Accept and place order",
+  "kpAcceptConfirmTitle": "Accept the quote?",
+  "kpAccepted": "Quote accepted — order placed",
+  "kpReject": "Decline",
+  "kpRejectTitle": "Decline the quote",
+  "kpRejectHint": "Reason (optional), e.g. too expensive",
+  "kpRejected": "Quote declined",
+  "kpRequestAgain": "Get a new quote",
+  "kpRequestedAgain": "Request sent to the seller",
+  "kpPreparing": "The seller is preparing the quote — usually 1 business day. You'll get an SMS when it's ready.",
+  "kpExpired": "The quote has expired — request a new one",
+  "statusQuoteExpired": "Quote expired",
+  "kpAcceptConfirmBody": "Total {total}. The seller will contact you to arrange delivery and payment.",
+  "@kpAcceptConfirmBody": {
+    "placeholders": {
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "kpPartial": "The seller is pricing {count} items — you'll get an SMS when the quote is complete",
+  "@kpPartial": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "kpIssueNow": "Get the quote now",
+  "kpIssued": "Quote ready — priced items are in the document",
+  "kpTo": "To:",
+  "kpToHead": "To the head of",
+  "kpColName": "Description",
+  "kpColUnit": "Unit",
+  "kpColUnitPrice": "Unit price",
+  "kpColAmount": "Amount",
+  "kpColVat": "VAT 12%",
+  "kpColTotalVat": "Amount incl. VAT",
+  "kpUnit": "pcs",
+  "kpTotalRow": "Total:",
+  "kpRegards": "Sincerely,",
+  "kpVatNote": "Prices are in UZS including 12% VAT.",
+  "kpDated": "dated {date}",
+  "@kpDated": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "kpIntro": "{seller} can supply the following equipment for your request:",
+  "@kpIntro": {
+    "placeholders": {
+      "seller": {
+        "type": "String"
+      }
+    }
+  },
+  "kpValidRange": "*Prices are valid from {from} to {to}",
+  "@kpValidRange": {
+    "placeholders": {
+      "from": {
+        "type": "String"
+      },
+      "to": {
+        "type": "String"
+      }
+    }
+  },
+  "kpDirectorOf": "Director, {company}",
+  "@kpDirectorOf": {
+    "placeholders": {
+      "company": {
+        "type": "String"
+      }
+    }
+  },
+  "kpHeadOf": "Head of {company}",
+  "@kpHeadOf": {
+    "placeholders": {
+      "company": {
+        "type": "String"
+      }
+    }
+  },
+  "specsEmpty": "No specifications",
+  "variantsCount": "{count} variants",
+  "@variantsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "orderItemsSummary": "{name} and {count} more",
+  "@orderItemsSummary": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "piecesCount": "{count} pcs",
+  "@piecesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "priceSheetBody": "The seller will price it in a quote within 1 business day. Need it faster? Call or message on Telegram.",
+  "priceSheetQuote": "Get a quote — price within 1 business day",
+  "priceSheetTelegram": "Message on Telegram",
+  "priceSheetCall": "Call · {store}",
+  "@priceSheetCall": {
+    "placeholders": {
+      "store": {
+        "type": "String"
+      }
+    }
+  }
+}

@@ -1,0 +1,439 @@
+{
+  "@@locale": "ru",
+  "appName": "Climavent",
+  "tagline": "Оборудование для вентиляции и кондиционирования",
+  "langTitle": "Выберите язык",
+  "langSubtitle": "Изменить можно позже в настройках профиля",
+  "continueAction": "Продолжить",
+  "onb1Title": "Напрямую от производителя",
+  "onb1Body": "Вентиляторы, кондиционеры, воздуховоды — от заводов и магазинов Узбекистана.",
+  "onb2Title": "Коммерческое предложение за секунду",
+  "onb2Body": "Добавьте в корзину и получите КП в PDF ещё до покупки — для согласования с руководством.",
+  "onb3Title": "Следите за доставкой в реальном времени",
+  "onb3Body": "Где курьер и когда он приедет — видно на карте.",
+  "onbNext": "Далее",
+  "onbStart": "Начать",
+  "onbSkip": "Пропустить",
+  "phoneTitle": "Ваш номер телефона",
+  "phoneSubtitle": "Отправим код по SMS для входа или регистрации",
+  "phoneLabel": "Номер телефона",
+  "phoneInvalid": "Введите номер полностью: 9 цифр",
+  "getCode": "Получить код",
+  "later": "Позже",
+  "phoneFooter": "Продолжая, вы соглашаетесь получить SMS. Тариф оператора стандартный.",
+  "consentTitle": "Вы у нас впервые",
+  "consentBody": "Чтобы создать аккаунт, ознакомьтесь с условиями и дайте согласие.",
+  "consentPrefix": "Я ознакомился(-ась) и согласен(-на) с ",
+  "consentTerms": "Пользовательским соглашением",
+  "consentAnd": " и ",
+  "consentPrivacy": "Политикой конфиденциальности",
+  "consentSuffix": "",
+  "consentAccept": "Согласен, отправить код",
+  "otpTitle": "Введите код",
+  "otpSubtitle": "Мы отправили 5-значный код на {phone}",
+  "@otpSubtitle": {
+    "placeholders": {
+      "phone": {
+        "type": "String"
+      }
+    }
+  },
+  "otpChangeNumber": "Изменить номер",
+  "otpResendIn": "Отправить повторно: {time}",
+  "@otpResendIn": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "otpResend": "Отправить код повторно",
+  "otpResent": "Новый код отправлен",
+  "otpWrong": "Неверный код. Попробуйте ещё раз",
+  "otpExpired": "Срок действия кода истёк. Запросите новый",
+  "otpVerifying": "Проверяем…",
+  "profileSetupTitle": "Давайте познакомимся",
+  "profileSetupSubtitle": "Имя будет указано в заказах и коммерческих предложениях",
+  "firstName": "Имя",
+  "lastName": "Фамилия",
+  "firstNameRequired": "Введите имя",
+  "save": "Сохранить",
+  "welcome": "Добро пожаловать, {name}!",
+  "@welcome": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "welcomeNoName": "Добро пожаловать!",
+  "tabHome": "Главная",
+  "tabCatalog": "Каталог",
+  "tabCart": "Корзина",
+  "tabOrders": "Заказы",
+  "tabProfile": "Профиль",
+  "searchHint": "Поиск товара или модели",
+  "soonTitle": "Скоро",
+  "soonCatalog": "Здесь будет каталог: товары, модели и фильтры.",
+  "soonCart": "Купить или получить КП из корзины — одной кнопкой.",
+  "soonOrders": "Заказы, КП и отслеживание доставки — здесь.",
+  "homeHeroTitle": "Приложение запускается",
+  "homeHeroBody": "Первый этап — вход и аккаунт. Далее каталог, корзина и отслеживание.",
+  "guestTitle": "Войдите в аккаунт",
+  "guestBody": "Заказы, коммерческие предложения и статус доставки в одном месте",
+  "signIn": "Войти",
+  "settingsLanguage": "Язык",
+  "settingsTheme": "Тема",
+  "themeSystem": "Как в системе",
+  "themeLight": "Светлая",
+  "themeDark": "Тёмная",
+  "settingsTerms": "Пользовательское соглашение",
+  "settingsPrivacy": "Политика конфиденциальности",
+  "settingsSupport": "Поддержка",
+  "signOut": "Выйти",
+  "signOutConfirm": "Выйти из аккаунта?",
+  "cancel": "Отмена",
+  "version": "Версия {v}",
+  "@version": {
+    "placeholders": {
+      "v": {
+        "type": "String"
+      }
+    }
+  },
+  "errNetwork": "Нет соединения с интернетом. Проверьте подключение",
+  "errServer": "Ошибка сервера. Попробуйте чуть позже",
+  "errTooMany": "Слишком много попыток. Попробуйте позже",
+  "errUnknown": "Произошла непредвиденная ошибка",
+  "retry": "Повторить",
+  "priceSum": "{sum} сум",
+  "@priceSum": {
+    "placeholders": {
+      "sum": {
+        "type": "String"
+      }
+    }
+  },
+  "priceFrom": "от {price}",
+  "@priceFrom": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "priceOnRequest": "Узнать цену",
+  "priceOnRequestHint": "Добавьте в корзину и получите КП — продавец сообщит цену в течение 1 рабочего дня",
+  "saleTag": "Акция",
+  "homeSale": "Товары по акции",
+  "homeNew": "Новинки",
+  "homePopular": "Популярное",
+  "emptyCategory": "В этом разделе пока нет товаров",
+  "allItems": "Все",
+  "pricedOnly": "С ценой",
+  "sortTitle": "Сортировка",
+  "sortPopular": "Популярные",
+  "sortCheap": "Дешевле",
+  "sortExpensive": "Дороже",
+  "sortNew": "Новые",
+  "searchNothing": "Ничего не найдено",
+  "searchNothingHint": "Попробуйте другое слово или название модели",
+  "searchFound": "Найдено: {count}",
+  "@searchFound": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "searchStartHint": "Ищите по названию, модели или артикулу: например, «ВЦ 4-75» или «канальный вентилятор»",
+  "searchRecent": "Недавние запросы",
+  "clear": "Очистить",
+  "modelsCount": "Моделей: {count}",
+  "@modelsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "chooseModel": "Выберите модель",
+  "modelLabel": "Модель",
+  "variantsTitle": "Варианты",
+  "descriptionTitle": "Описание",
+  "purposeTitle": "Назначение",
+  "sellerTitle": "Продавец",
+  "callSeller": "Позвонить",
+  "addToCart": "В корзину",
+  "chooseModelFirst": "Сначала выберите модель",
+  "addedToCart": "Добавлено в корзину",
+  "goToCart": "Перейти в корзину",
+  "cartEmptyTitle": "Корзина пуста",
+  "cartEmptyBody": "Добавьте товары — затем купите или получите КП",
+  "goToCatalog": "В каталог",
+  "cartClearConfirm": "Очистить корзину?",
+  "cartTotal": "Итого",
+  "cartUnpriced": "+ цену {count} товаров сообщит продавец",
+  "@cartUnpriced": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "checkoutOrder": "Оформить заказ",
+  "checkoutQuote": "Получить КП",
+  "checkoutSoonTitle": "Оформление — в следующей версии",
+  "checkoutSoonBody": "Оформление заказа и получение КП появятся в следующей версии приложения. Корзина сохранится на этом телефоне.",
+  "understood": "Понятно",
+  "favoritesTitle": "Избранное",
+  "favoritesEmptyTitle": "В избранном пусто",
+  "favoritesEmptyBody": "Нажмите ♡ на товаре — он сохранится здесь",
+  "sizesTitle": "Размеры",
+  "markingTitle": "Обозначение",
+  "chooseVariant": "Выберите вариант",
+  "chooseVariantFirst": "Сначала выберите вариант",
+  "specsTitle": "Характеристики",
+  "specsChooseModel": "Выберите модель — здесь появятся её технические характеристики",
+  "specAirflow": "Расход воздуха",
+  "specPressure": "Давление",
+  "checkoutOrderTitle": "Оформление заказа",
+  "checkoutQuoteTitle": "Запрос КП",
+  "checkoutQuoteNote": "Продавец пришлёт цены в течение 1 рабочего дня. Когда КП будет готово, придёт SMS — оно появится в разделе «Заказы».",
+  "checkoutLoginTitle": "Войдите, чтобы продолжить",
+  "checkoutLoginBody": "Заказ и КП привязываются к аккаунту — статус видно в приложении",
+  "deliveryAddress": "Адрес доставки",
+  "deliveryAddressOptional": "Адрес доставки (необязательно)",
+  "addressLabel": "Адрес",
+  "addressRequired": "Укажите адрес или отметьте на карте",
+  "addressDetailsLabel": "Подъезд, этаж, квартира, ориентир",
+  "recipientTitle": "Получатель",
+  "recipientName": "Имя и фамилия",
+  "companyTitle": "Компания (необязательно)",
+  "companyName": "Название компании",
+  "companyTin": "ИНН",
+  "companyTinInvalid": "ИНН состоит из 9 цифр",
+  "commentTitle": "Комментарий",
+  "commentHint": "Например: с монтажом, нужны грузчики",
+  "sendQuoteRequest": "Отправить запрос КП",
+  "confirmOrder": "Подтвердить заказ",
+  "paymentNote": "Оплата продавцу: банковский перевод, карта или наличные. Продавец свяжется с вами и согласует доставку и оплату.",
+  "mapPick": "Отметить на карте",
+  "mapChange": "Изменить",
+  "mapMoving": "Выберите место…",
+  "mapLoadingAddress": "Определяем адрес…",
+  "mapConfirm": "Этот адрес",
+  "locationOff": "Геолокация на телефоне выключена",
+  "locationDenied": "Нет доступа к геолокации",
+  "locationFailed": "Не удалось определить местоположение",
+  "doneOrderTitle": "Заказ принят",
+  "doneQuoteTitle": "Запрос КП отправлен",
+  "doneOrderBody": "Продавец скоро свяжется с вами, чтобы согласовать доставку и оплату.",
+  "doneQuoteBody": "Продавец пришлёт цены в течение 1 рабочего дня. Когда КП будет готово, придёт SMS.",
+  "myOrders": "Мои заказы",
+  "continueShopping": "Продолжить покупки",
+  "ordersLoginTitle": "Здесь будут ваши заказы",
+  "ordersLoginBody": "Войдите, чтобы видеть заказы, КП и статус доставки",
+  "ordersEmptyTitle": "Заказов пока нет",
+  "ordersEmptyBody": "Выберите товары в каталоге — заказы и КП появятся здесь",
+  "quoteLabel": "КП",
+  "orderLabel": "Заказ",
+  "priceAwaited": "Ожидается цена",
+  "statusNew": "Новый",
+  "statusQuotePending": "Продавец готовит цены",
+  "statusQuoteReady": "КП готово",
+  "statusPaid": "Оплачен",
+  "statusShipping": "Доставляется",
+  "statusDone": "Завершён",
+  "statusCancelled": "Отменён",
+  "itemsCount": "Товаров: {count}",
+  "@itemsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "moreItems": "ещё {count}",
+  "@moreItems": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "checkoutSplit": "Товары из {count} магазинов — каждому уйдёт отдельный заказ",
+  "@checkoutSplit": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "doneNumbers": "Номер: {numbers}",
+  "@doneNumbers": {
+    "placeholders": {
+      "numbers": {
+        "type": "String"
+      }
+    }
+  },
+  "checkoutPartial": "{ids} отправлены, остальные не удалось — попробуйте ещё раз",
+  "@checkoutPartial": {
+    "placeholders": {
+      "ids": {
+        "type": "String"
+      }
+    }
+  },
+  "chooseOptions": "Выбрать",
+  "searchInList": "Поиск по списку",
+  "bannerMore": "Подробнее",
+  "inCartCount": "В корзине · {count}",
+  "@inCartCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "pdfFailed": "Не удалось подготовить PDF. Проверьте интернет и попробуйте снова",
+  "kpTitle": "Коммерческое предложение",
+  "kpDate": "Дата",
+  "kpValidUntil": "Действует до",
+  "kpSeller": "Продавец",
+  "kpBuyer": "Покупатель",
+  "kpColProduct": "Товар",
+  "kpColQty": "Кол-во",
+  "kpColPrice": "Цена, сум",
+  "kpColSum": "Сумма, сум",
+  "kpUnpricedCell": "цену сообщит продавец",
+  "kpDeliveryTerms": "Доставка",
+  "kpPaymentTerms": "Оплата",
+  "kpDisclaimer": "Цены по курсу на дату. Окончательные условия согласуются с продавцом. Документ не является публичной офертой.",
+  "kpDownloadPdf": "Скачать PDF",
+  "kpAccept": "Принимаю — оформить заказ",
+  "kpAcceptConfirmTitle": "Принять КП?",
+  "kpAccepted": "КП принято — заказ оформлен",
+  "kpReject": "Отклонить",
+  "kpRejectTitle": "Отклонить КП",
+  "kpRejectHint": "Причина (необязательно): например, дорого",
+  "kpRejected": "КП отклонено",
+  "kpRequestAgain": "Получить новое",
+  "kpRequestedAgain": "Запрос отправлен продавцу",
+  "kpPreparing": "Продавец готовит КП — обычно 1 рабочий день. Когда будет готово, придёт SMS.",
+  "kpExpired": "Срок КП истёк — запросите новое",
+  "statusQuoteExpired": "КП истекло",
+  "kpAcceptConfirmBody": "Итого {total}. Продавец свяжется с вами, чтобы согласовать доставку и оплату.",
+  "@kpAcceptConfirmBody": {
+    "placeholders": {
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "kpPartial": "Продавец готовит цены на {count} товаров — когда КП будет полным, придёт SMS",
+  "@kpPartial": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "kpIssueNow": "Получить КП сейчас",
+  "kpIssued": "КП готово — товары с ценой в документе",
+  "kpTo": "Кому:",
+  "kpToHead": "Руководителю",
+  "kpColName": "Наименование",
+  "kpColUnit": "Ед. изм",
+  "kpColUnitPrice": "Цена за шт",
+  "kpColAmount": "Сумма",
+  "kpColVat": "НДС 12%",
+  "kpColTotalVat": "Сумма с учетом НДС",
+  "kpUnit": "шт",
+  "kpTotalRow": "Итого:",
+  "kpRegards": "С уважением,",
+  "kpVatNote": "Цены указаны в сумах с учетом НДС 12%.",
+  "kpDated": "от {date} г.",
+  "@kpDated": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "kpIntro": "{seller} имеет возможность поставить оборудование по Вашей заявке:",
+  "@kpIntro": {
+    "placeholders": {
+      "seller": {
+        "type": "String"
+      }
+    }
+  },
+  "kpValidRange": "*Цены на продукцию действительны от {from}г по {to}г",
+  "@kpValidRange": {
+    "placeholders": {
+      "from": {
+        "type": "String"
+      },
+      "to": {
+        "type": "String"
+      }
+    }
+  },
+  "kpDirectorOf": "Директор {company}",
+  "@kpDirectorOf": {
+    "placeholders": {
+      "company": {
+        "type": "String"
+      }
+    }
+  },
+  "kpHeadOf": "Руководитель {company}",
+  "@kpHeadOf": {
+    "placeholders": {
+      "company": {
+        "type": "String"
+      }
+    }
+  },
+  "specsEmpty": "Характеристик нет",
+  "variantsCount": "Вариантов: {count}",
+  "@variantsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "orderItemsSummary": "{name} и ещё {count}",
+  "@orderItemsSummary": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "piecesCount": "{count} шт",
+  "@piecesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "priceSheetBody": "Продавец сообщит цену в КП в течение 1 рабочего дня. Если нужно быстрее — позвоните или напишите в Telegram.",
+  "priceSheetQuote": "Получить КП — цена за 1 рабочий день",
+  "priceSheetTelegram": "Написать в Telegram",
+  "priceSheetCall": "Позвонить · {store}",
+  "@priceSheetCall": {
+    "placeholders": {
+      "store": {
+        "type": "String"
+      }
+    }
+  }
+}
