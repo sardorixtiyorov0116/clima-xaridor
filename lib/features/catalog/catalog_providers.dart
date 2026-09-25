@@ -15,6 +15,10 @@ final categoriesProvider = FutureProvider<List<Category>>(
 final productsProvider =
     FutureProvider<List<Product>>((ref) => ref.read(catalogRepositoryProvider).products());
 
+/// Do'konlarning to'liq rekvizitlari — KP blanki shu yerdan oladi.
+final storesProvider =
+    FutureProvider<List<Store>>((ref) => ref.read(catalogRepositoryProvider).stores());
+
 final bannersProvider =
     FutureProvider<List<PromoBanner>>((ref) => ref.read(catalogRepositoryProvider).banners());
 

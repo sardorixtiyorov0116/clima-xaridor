@@ -44,3 +44,6 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 Climavent-*.apk
+
+# Chat ekranlari rasmi (test/chat_golden_test.dart)
+test/goldens/

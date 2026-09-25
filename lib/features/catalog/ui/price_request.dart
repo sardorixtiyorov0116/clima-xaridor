@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../../core/theme/tokens.dart';
 import '../../../core/widgets/buttons.dart';
@@ -13,7 +12,7 @@ import '../data/models.dart';
 import 'widgets.dart';
 
 /// Narxsiz mahsulotda "Narxini bilish" — bosiladigan tugmacha.
-/// Bosilganda: KP olish (asosiy), sotuvchiga qo'ng'iroq, Telegram.
+/// Bosilganda: KP olish (asosiy) yoki sotuvchiga ilovada yozish.
 class PriceRequestChip extends ConsumerWidget {
   const PriceRequestChip({super.key, required this.product, this.model, this.variant, this.big = false});
   final Product product;
@@ -123,8 +122,6 @@ class _PriceRequestSheet extends ConsumerWidget {
     final c = context.colors;
     final lang = ref.watch(langProvider);
     final store = product.store;
-    final phone = store?.phone;
-    final telegram = store?.telegram?.replaceAll('@', '');
     final title = [product.name.of(lang), variant?.name ?? model?.title].whereType<String>().where((e) => e.isNotEmpty).join(' · ');
     ButtonStyle outlined() => OutlinedButton.styleFrom(
           minimumSize: const Size.fromHeight(52),
@@ -177,27 +174,15 @@ class _PriceRequestSheet extends ConsumerWidget {
             icon: Icons.request_quote_outlined,
             onPressed: () => _getQuote(context, ref),
           ),
-          if (phone != null) ...[
+          if (store != null) ...[
             const SizedBox(height: Space.sm),
             OutlinedButton.icon(
               onPressed: () {
                 Navigator.pop(context);
-                launchUrl(Uri.parse('tel:${phone.replaceAll(RegExp(r'[^\d+]'), '')}'));
+                router.push('/chat/store/${store.id}?product=${product.id}', extra: store);
               },
-              icon: const Icon(Icons.call_outlined),
-              label: Text(s.priceSheetCall(store!.name)),
-              style: outlined(),
-            ),
-          ],
-          if (telegram != null && telegram.isNotEmpty) ...[
-            const SizedBox(height: Space.sm),
-            OutlinedButton.icon(
-              onPressed: () {
-                Navigator.pop(context);
-                launchUrl(Uri.parse('https://t.me/$telegram'), mode: LaunchMode.externalApplication);
-              },
-              icon: const Icon(Icons.send_outlined),
-              label: Text(s.priceSheetTelegram),
+              icon: const Icon(Icons.chat_bubble_outline_rounded),
+              label: Text(s.chatWriteToStore),
               style: outlined(),
             ),
           ],

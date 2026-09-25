@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
 import 'package:go_router/go_router.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../../core/theme/tokens.dart';
 import '../../../core/widgets/buttons.dart';
@@ -13,6 +12,7 @@ import '../catalog_providers.dart';
 import '../data/models.dart';
 import 'price_request.dart';
 import 'widgets.dart';
+import '../../services/ui/product_install_tile.dart';
 
 class ProductScreen extends ConsumerStatefulWidget {
   const ProductScreen({super.key, required this.productId});
@@ -71,7 +71,7 @@ class _ProductScreenState extends ConsumerState<ProductScreen> {
                 // Modelda variantlar bo'lsa narx faqat variantlarda ko'rinadi.
                 trailing: model == null || model.variants.length > 1
                     ? null
-                    : PriceView(usd: model.fromPrice?.usd, saleUsd: model.fromPrice?.saleUsd),
+                    : PriceView.of(model.fromPrice),
                 onTap: () async {
                   final id = await _pickOption(context, title: s.chooseModel, selected: model?.id, options: [
                     for (final m in p.models)
@@ -112,7 +112,7 @@ class _ProductScreenState extends ConsumerState<ProductScreen> {
                 label: s.variantsTitle,
                 placeholder: s.chooseVariant,
                 value: variant == null ? null : (variant.name.isNotEmpty ? variant.name : variant.code),
-                trailing: variant == null ? null : PriceView(usd: variant.price?.usd, saleUsd: variant.price?.saleUsd),
+                trailing: variant == null ? null : PriceView.of(variant.price),
                 onTap: () async {
                   final id = await _pickOption(context, title: s.chooseVariant, selected: variant?.id, options: [
                     for (final v in model.variants)
@@ -127,6 +127,8 @@ class _ProductScreenState extends ConsumerState<ProductScreen> {
                 },
               ),
             ),
+          // O'rnatish xizmati (№39) — narxi bilan, tovar tanlovi ostida.
+          SliverToBoxAdapter(child: ProductInstallTile(productId: p.id)),
           // To'liq ma'lumot kelguncha bo'limlar o'rnida skelet — sahifa sakramaydi.
           if (!detail.hasValue && !detail.hasError)
             const SliverToBoxAdapter(child: _SectionsSkeleton())
@@ -140,7 +142,7 @@ class _ProductScreenState extends ConsumerState<ProductScreen> {
             SliverToBoxAdapter(child: _HtmlSection(title: s.descriptionTitle, url: p.descriptionUrl!)),
           if (p.purposeUrl != null)
             SliverToBoxAdapter(child: _HtmlSection(title: s.purposeTitle, url: p.purposeUrl!)),
-          if (p.store != null) SliverToBoxAdapter(child: _StoreCard(store: p.store!)),
+          if (p.store != null) SliverToBoxAdapter(child: _StoreCard(store: p.store!, productId: p.id)),
           const SliverToBoxAdapter(child: SizedBox(height: Space.xxl)),
         ],
       ),
@@ -317,9 +319,9 @@ class _Info extends ConsumerWidget {
             const SizedBox(height: 8),
             Text(s.priceOnRequestHint, style: context.text.bodyMedium),
           ] else if (m != null)
-            PriceView(usd: price?.usd, saleUsd: price?.saleUsd, big: true, from: multiVariant)
+            PriceView.of(price, big: true, from: multiVariant)
           else
-            PriceView(usd: p.minUsd, saleUsd: p.minSaleUsd, from: p.multiModel, big: true),
+            PriceView(usd: p.minUsd, saleUsd: p.minSaleUsd, uzs: p.minUzs, saleUzs: p.minSaleUzs, from: p.multiModel, big: true),
           const SizedBox(height: Space.md),
           Text(p.name.of(lang), style: context.text.headlineSmall?.copyWith(fontSize: 21)),
           // Qisqa tavsif kelguncha skelet; kelganda balandlik silliq o'zgaradi (sakramaydi).
@@ -431,7 +433,9 @@ class _Models extends ConsumerWidget {
                           ? s.variantsCount(m.variants.length)
                           : (m.fromPrice == null
                               ? s.priceOnRequest
-                              : (rate == null ? '…' : sumText(context, rate.toSum(m.fromPrice!.effective)))),
+                              : (m.fromPrice!.effectiveSum(rate) == null
+                                  ? '…'
+                                  : sumText(context, m.fromPrice!.effectiveSum(rate)!))),
                       subMuted: m.variants.length > 1 || m.fromPrice == null,
                       selected: m.id == selected,
                       onTap: () => onSelect(m.id),
@@ -801,7 +805,7 @@ class _OptionSheetState extends State<_OptionSheet> {
                           ),
                           if (!o.hidePrice) ...[
                             const SizedBox(width: 8),
-                            PriceView(usd: o.price?.usd, saleUsd: o.price?.saleUsd),
+                            PriceView.of(o.price),
                           ],
                           const SizedBox(width: 8),
                           SizedBox(
@@ -981,8 +985,9 @@ class _HtmlBody extends ConsumerWidget {
 }
 
 class _StoreCard extends ConsumerWidget {
-  const _StoreCard({required this.store});
+  const _StoreCard({required this.store, required this.productId});
   final Store store;
+  final int productId;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -1028,31 +1033,15 @@ class _StoreCard extends ConsumerWidget {
               Text(about, maxLines: 3, overflow: TextOverflow.ellipsis, style: context.text.bodyMedium),
             ],
             const SizedBox(height: Space.lg),
-            Row(
-              children: [
-                if (store.phone != null)
-                  Expanded(
-                    child: OutlinedButton.icon(
-                      onPressed: () =>
-                          launchUrl(Uri.parse('tel:${store.phone!.replaceAll(RegExp(r'[^\d+]'), '')}')),
-                      icon: const Icon(Icons.call_outlined, size: 18),
-                      label: Text(s.callSeller),
-                      style: _outlined(c),
-                    ),
-                  ),
-                if (store.phone != null && store.telegram != null) const SizedBox(width: Space.sm),
-                if (store.telegram != null)
-                  Expanded(
-                    child: OutlinedButton.icon(
-                      onPressed: () => launchUrl(
-                          Uri.parse('https://t.me/${store.telegram!.replaceAll('@', '')}'),
-                          mode: LaunchMode.externalApplication),
-                      icon: const Icon(Icons.send_outlined, size: 18),
-                      label: const Text('Telegram'),
-                      style: _outlined(c),
-                    ),
-                  ),
-              ],
+            // Telefon va Telegram ko'rsatilmaydi — xaridor do'kon bilan ilovada yozishadi (№34).
+            SizedBox(
+              width: double.infinity,
+              child: OutlinedButton.icon(
+                onPressed: () => context.push('/chat/store/${store.id}?product=$productId', extra: store),
+                icon: const Icon(Icons.chat_bubble_outline_rounded, size: 18),
+                label: Text(s.chatWriteToStore),
+                style: _outlined(c),
+              ),
             ),
           ],
         ),

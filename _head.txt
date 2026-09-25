@@ -1,0 +1,75 @@
+import 'package:flutter/services.dart';
+import 'package:pdf/pdf.dart';
+import 'package:pdf/widgets.dart' as pw;
+import 'package:printing/printing.dart';
+
+import '../../../core/config.dart';
+import '../../../l10n/app_localizations.dart';
+import '../../catalog/data/models.dart';
+import '../data/order_models.dart';
+
+const _cols = <int, pw.TableColumnWidth>{
+  0: pw.FixedColumnWidth(18),
+  1: pw.FlexColumnWidth(3.3),
+  2: pw.FixedColumnWidth(30),
+  3: pw.FixedColumnWidth(34),
+  4: pw.FixedColumnWidth(66),
+  5: pw.FixedColumnWidth(70),
+  6: pw.FixedColumnWidth(62),
+  7: pw.FixedColumnWidth(72),
+};
+
+/// `3324000` → `3 324 000,00` (namunadagi KP formati).
+String _money(num v) {
+  final fixed = v.toStringAsFixed(2);
+  final parts = fixed.split('.');
+  final s = parts[0];
+  final b = StringBuffer();
+  for (var i = 0; i < s.length; i++) {
+    if (i > 0 && (s.length - i) % 3 == 0) b.write(' ');
+    b.write(s[i]);
+  }
+  return '$b,${parts[1]}';
+}
+
+String _d(DateTime? d) => d == null
+    ? '—'
+    : '${d.day.toString().padLeft(2, '0')}.${d.month.toString().padLeft(2, '0')}.${d.year}';
+
+const _navy = PdfColor.fromInt(0xFF002854);
+const _muted = PdfColor.fromInt(0xFF5B6B82);
+const _line = PdfColor.fromInt(0xFFB9C3D1);
+const _head = PdfColor.fromInt(0xFFE3F0FB);
+const _headStrong = PdfColor.fromInt(0xFFC7E2F6); // umumiy jami yo'lagi
+const _vat = AppConfig.kpVatRate; // 0.12
+
+/// Do'kon rekvizitlari KP uchun: backend ma'lumoti, bo'sh joylari sozlamadan.
+class KpSeller {
+  KpSeller(Store? s, int storeId, String lang)
+    : name = s?.name ?? '',
+      legal =
+          s?.legalName ??
+          AppConfig.storeLegalName(storeId, lang) ??
+          s?.name ??
+          '',
+      tin = s?.tin,
+      phone = s?.phone,
+      email = s?.email,
+      website = s?.website
+          ?.replaceFirst(RegExp(r'^https?://'), '')
+          .replaceAll(RegExp(r'/$'), ''),
+      address = s?.address,
+      director = AppConfig.storeDirector(storeId, lang),
+      isClimavent = storeId == AppConfig.climaventStoreId;
+
+  final String name;
+  final String legal;
+  final String? tin;
+  final String? phone;
+  final String? email;
+  final String? website;
+  final String? address;
+  final String? director;
+  final bool isClimavent;
+}
+

@@ -91,22 +91,34 @@ class Store {
   }
 }
 
-/// Narx (USD) va aksiya. Aksiya muddati o'tgan bo'lsa hisobga olinmaydi.
+/// Narx va aksiya. Aksiya muddati o'tgan bo'lsa hisobga olinmaydi.
+///
+/// [usd] DOIM dollarda — so'mda narx qo'ygan do'konda ham (backend №37: `price_uzs / kurs`),
+/// shuning uchun taqqoslash va saralash shu bilan. Ko'rsatish esa [uzs] bilan: so'mdagi
+/// narx aynan sotuvchi yozgani, dollardagisi backend kursida hisoblangani.
 class Price {
-  const Price(this.usd, {this.saleUsd});
+  const Price(this.usd, {this.saleUsd, this.uzs, this.saleUzs});
   final double usd;
   final double? saleUsd;
+
+  /// So'mdagi tayyor narx (`price_uzs`, `sale_price_uzs`). Eski backend — null.
+  final int? uzs;
+  final int? saleUzs;
 
   double get effective => saleUsd ?? usd;
   bool get onSale => saleUsd != null && saleUsd! < usd;
 
-  static Price? parse(Object? price, Object? sale, Object? saleEnds) {
+  /// Asosiy va amaldagi narx so'mda: backenddagi aniq qiymat, bo'lmasa kurs bilan.
+  int? baseSum(UsdRate? rate) => uzs ?? rate?.toSum(usd);
+  int? effectiveSum(UsdRate? rate) => saleUsd != null ? (saleUzs ?? rate?.toSum(saleUsd!)) : baseSum(rate);
+
+  static Price? parse(Object? price, Object? sale, Object? saleEnds, {Object? uzs, Object? saleUzs}) {
     final p = _d(price);
     if (p == null) return null;
     var s = _d(sale);
     final ends = DateTime.tryParse(_s(saleEnds));
     if (ends != null && ends.isBefore(DateTime.now())) s = null;
-    return Price(p, saleUsd: s);
+    return Price(p, saleUsd: s, uzs: _d(uzs)?.round(), saleUzs: s == null ? null : _d(saleUzs)?.round());
   }
 }
 
@@ -122,7 +134,7 @@ class Variant {
         id: _i(j['id']),
         code: _s(j['sap_name']),
         name: _s(j['in_model_name']),
-        price: Price.parse(j['price'], j['sale_price'], j['sale_ends_at']),
+        price: Price.parse(j['price'], j['sale_price'], j['sale_ends_at'], uzs: j['price_uzs'], saleUzs: j['sale_price_uzs']),
       );
 }
 
@@ -157,7 +169,7 @@ class ProductModel {
   factory ProductModel.fromJson(Map<String, dynamic> j) => ProductModel(
         id: _i(j['id']),
         title: _s(j['title']),
-        price: Price.parse(j['price'], j['sale_price'], j['sale_ends_at']),
+        price: Price.parse(j['price'], j['sale_price'], j['sale_ends_at'], uzs: j['price_uzs'], saleUzs: j['sale_price_uzs']),
         specsUrl: _s(j['content']).startsWith('http') ? _s(j['content']) : null,
         airflow: _d(j['airflow_m3h']),
         pressure: _d(j['pressure_pa']),
@@ -180,6 +192,8 @@ class Product {
     this.producer,
     this.minUsd,
     this.minSaleUsd,
+    this.minUzs,
+    this.minSaleUzs,
     this.views = 0,
     this.shortDescription,
     this.descriptionUrl,
@@ -198,6 +212,10 @@ class Product {
   final String? producer;
   final double? minUsd;
   final double? minSaleUsd;
+
+  /// "...dan" narx so'mda (№37 `min_price_uzs`) — so'mdagi mahsulotda kursga ko'paytirilmaydi.
+  final int? minUzs;
+  final int? minSaleUzs;
   final int views;
   final L10nText? shortDescription;
 
@@ -239,6 +257,8 @@ class Product {
       producer: _s(j['producer']).isEmpty ? null : _s(j['producer']),
       minUsd: _d(j['min_price']),
       minSaleUsd: _d(j['min_sale_price']),
+      minUzs: _d(j['min_price_uzs'])?.round(),
+      minSaleUzs: _d(j['min_sale_price_uzs'])?.round(),
       views: _i(j['views']),
       shortDescription: j.containsKey('description_short_uz') ? L10nText.from(j, 'description_short') : null,
       descriptionUrl: url('opisaniya'),

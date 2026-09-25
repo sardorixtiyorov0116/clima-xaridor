@@ -14,6 +14,7 @@ import '../data/order_models.dart';
 import '../orders_providers.dart';
 import 'kp_pdf.dart';
 import 'orders_tab.dart' show orderStatusLabel;
+import 'tracking_view.dart';
 
 String _date(DateTime? d) =>
     d == null ? '' : '${d.day.toString().padLeft(2, '0')}.${d.month.toString().padLeft(2, '0')}.${d.year}';
@@ -34,7 +35,22 @@ class _OrderScreenState extends ConsumerState<OrderScreen> {
   bool _busy = false;
   bool _pdfBusy = false;
 
+  @override
+  void initState() {
+    super.initState();
+    // Ro'yxat ancha oldin yuklangan bo'lishi mumkin — sahifa ochilganda KP ning oxirgi holati olinadi.
+    // Yangilanayotganda eski ma'lumot ko'rinib turadi, sahifa bo'shab qolmaydi.
+    Future.microtask(() {
+      if (mounted) ref.invalidate(myOrdersProvider);
+    });
+  }
+
+  /// KP blanki uchun do'kon rekvizitlari. `/stores/all` da manzil, e-pochta va sayt bor;
+  /// mahsulot ichidagi `store` qisqartirilgan, unda faqat nom, logo va telefon keladi.
   Store? _store(int storeId) {
+    final full = ref.read(storesProvider).value ?? const <Store>[];
+    final hit = full.where((s) => s.id == storeId).firstOrNull;
+    if (hit != null) return hit;
     final all = ref.read(productsProvider).value ?? const <Product>[];
     return all.map((p) => p.store).whereType<Store>().where((s) => s.id == storeId).firstOrNull;
   }
@@ -45,6 +61,11 @@ class _OrderScreenState extends ConsumerState<OrderScreen> {
     try {
       final bytes =
           await buildKpPdf(s: s, lang: ref.read(langProvider), order: o, quotes: quotes, storeOf: _store);
+      // Bironta do'kon bo'limi tayyor emas — bo'sh hujjat o'rniga holatni aytamiz.
+      if (bytes == null) {
+        if (mounted) showSnack(context, s.kpPreparing, icon: Icons.hourglass_top_rounded);
+        return;
+      }
       await shareKpPdf(bytes, 'KP-${o.id}-v${quotes.first.version}.pdf');
     } catch (_) {
       if (mounted) showSnack(context, s.pdfFailed, icon: Icons.error_outline_rounded);
@@ -121,6 +142,7 @@ class _OrderScreenState extends ConsumerState<OrderScreen> {
     final s = S.of(context);
     final c = context.colors;
     final orders = ref.watch(myOrdersProvider);
+    ref.watch(storesProvider); // KP blanki rekvizitlari yuklansin
     final o = orders.value?.where((x) => x.id == widget.orderId).firstOrNull ?? widget.initial;
 
     if (o == null) {
@@ -146,7 +168,11 @@ class _OrderScreenState extends ConsumerState<OrderScreen> {
 
     final (label, color) = orderStatusLabel(s, o, c);
     final quotes = o.latestQuotes;
+    final readyQuotes = quotes.where((q) => q.allPriced).toList();
+    final unpricedTotal = quotes.fold(0, (a, q) => a + q.unpricedCount);
     final canDecide = o.status == 'quote_sent' && o.acceptedVersion == null;
+    // Kuzatish — buyurtma ishga tushgach: oddiy buyurtma yoki qabul qilingan KP.
+    final tracked = !o.isQuote || o.acceptedVersion != null;
 
     return Scaffold(
       appBar: AppBar(title: Text('${o.wasQuote ? s.quoteLabel : s.orderLabel} #${o.id}')),
@@ -167,29 +193,26 @@ class _OrderScreenState extends ConsumerState<OrderScreen> {
               ],
             ),
             const SizedBox(height: Space.lg),
-            if (o.isQuote && quotes.isEmpty) ...[
+            if (tracked && o.status != 'cancelled') OrderTrackingSection(orderId: o.id),
+            if (o.isQuote && quotes.isEmpty)
               _Banner(icon: Icons.hourglass_top_rounded, text: s.kpPreparing, color: const Color(0xFFE08A00)),
-              // Qatorlar backend №28 dan oldin qo'shilgan bo'lsa, hujjat yo'q — narxlilar uchun darhol chiqaramiz.
-              if (o.status == 'new' && o.items.any((i) => i.price != null)) ...[
-                PrimaryButton(
-                  label: s.kpIssueNow,
-                  icon: Icons.request_quote_outlined,
-                  loading: _busy,
-                  onPressed: () => _run(() => ref.read(orderRepositoryProvider).issueQuote(o.id), s.kpIssued),
-                ),
-                const SizedBox(height: Space.md),
-              ],
-            ],
+            // Narx kutilayotgan qatorlar bitta qatorda: xaridor do'konlarni emas,
+            // Climaventni ko'radi (egasi, 24.09.2026).
+            if (unpricedTotal > 0)
+              _Banner(
+                icon: Icons.hourglass_top_rounded,
+                text: s.kpWaitingCount(unpricedTotal),
+                color: const Color(0xFFE08A00),
+              ),
             for (final q in quotes) ...[
-              if (q.unpricedCount > 0)
-                _Banner(icon: Icons.hourglass_top_rounded, text: s.kpPartial(q.unpricedCount), color: const Color(0xFFE08A00)),
               if (q.expired && canDecide)
                 _Banner(icon: Icons.event_busy_rounded, text: s.kpExpired, color: c.danger),
-              _KpDocument(order: o, quote: q, store: _store(q.storeId)),
+              _KpDocument(order: o, quote: q),
               const SizedBox(height: Space.md),
             ],
             if (quotes.isEmpty) _ItemsCard(order: o),
-            if (quotes.isNotEmpty) ...[
+            // Hujjat faqat tayyor bo'limlardan quriladi — bittasi ham tayyor bo'lmasa tugma yo'q.
+            if (readyQuotes.isNotEmpty) ...[
               OutlinedButton.icon(
                 onPressed: _pdfBusy ? null : () => _pdf(o, quotes),
                 icon: _pdfBusy
@@ -251,10 +274,9 @@ class _Banner extends StatelessWidget {
 
 /// KP — qog'oz hujjatga o'xshash karta.
 class _KpDocument extends StatelessWidget {
-  const _KpDocument({required this.order, required this.quote, required this.store});
+  const _KpDocument({required this.order, required this.quote});
   final Order order;
   final Quote quote;
-  final Store? store;
 
   @override
   Widget build(BuildContext context) {
@@ -307,26 +329,6 @@ class _KpDocument extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                if (store != null) ...[
-                  Text(s.kpSeller.toUpperCase(), style: context.text.bodySmall?.copyWith(letterSpacing: 0.6)),
-                  const SizedBox(height: 6),
-                  Row(
-                    children: [
-                      StoreLogo(store: store!, size: 32),
-                      const SizedBox(width: 10),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(store!.legalName ?? store!.name, style: context.text.titleMedium),
-                            if (store!.phone != null) Text(store!.phone!, style: context.text.bodySmall),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                  Divider(height: Space.xl, color: c.border),
-                ],
                 for (var i = 0; i < q.items.length; i++) ...[
                   if (i > 0) Divider(height: Space.lg, color: c.border),
                   Row(
@@ -417,7 +419,7 @@ class _ItemsCard extends ConsumerWidget {
             if (i > 0) Divider(height: Space.lg, color: c.border),
             Builder(builder: (_) {
               final it = order.items[i];
-              final p = products.where((x) => x.id == it.productId).firstOrNull;
+              final p = it.productId == 0 ? null : products.where((x) => x.id == it.productId).firstOrNull;
               return Row(
                 children: [
                   Container(
@@ -425,7 +427,10 @@ class _ItemsCard extends ConsumerWidget {
                     height: 52,
                     padding: const EdgeInsets.all(4),
                     decoration: BoxDecoration(color: const Color(0xFFF4F6FA), borderRadius: BorderRadius.circular(10)),
-                    child: NetImage(p?.cover, width: 160),
+                    // Xizmat qatori (№39) — mahsulot emas, belgi.
+                    child: it.productId == 0
+                        ? const Icon(Icons.build_rounded, color: Brand.navy)
+                        : NetImage(p?.cover, width: 160),
                   ),
                   const SizedBox(width: 12),
                   Expanded(

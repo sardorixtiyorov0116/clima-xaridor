@@ -93,6 +93,10 @@ class ApiClient {
   Future<Map<String, dynamic>> post(String path, Object body) =>
       _send(() => _dio.post(path, data: body));
 
+  /// DELETE aniq token bilan — chiqish paytida sessiya allaqachon tozalanayotgan bo'lsa ham.
+  Future<Map<String, dynamic>> deleteWithToken(String path, String token) => _send(() => _dio.delete(path,
+      options: Options(headers: {'Authorization': 'Bearer $token'}, extra: {'retried': true})));
+
   Future<Map<String, dynamic>> patch(String path, Object body) =>
       _send(() => _dio.patch(path, data: body));
 

@@ -362,9 +362,6 @@ class SUz extends S {
   String get sellerTitle => 'Sotuvchi';
 
   @override
-  String get callSeller => 'Qoʻngʻiroq';
-
-  @override
   String get addToCart => 'Savatga';
 
   @override
@@ -456,7 +453,7 @@ class SUz extends S {
 
   @override
   String get checkoutQuoteNote =>
-      'Sotuvchi narxlarni 1 ish kuni ichida yuboradi. KP tayyor boʻlganda SMS keladi va uni «Buyurtmalar» boʻlimida koʻrasiz.';
+      'Narxlarni 1 ish kuni ichida tayyorlaymiz. KP tayyor boʻlganda xabar beramiz va uni «Buyurtmalar» boʻlimida koʻrasiz.';
 
   @override
   String get checkoutLoginTitle => 'Davom etish uchun kiring';
@@ -467,9 +464,6 @@ class SUz extends S {
 
   @override
   String get deliveryAddress => 'Yetkazish manzili';
-
-  @override
-  String get deliveryAddressOptional => 'Yetkazish manzili (ixtiyoriy)';
 
   @override
   String get addressLabel => 'Manzil';
@@ -655,9 +649,6 @@ class SUz extends S {
   String get kpValidUntil => 'Amal qiladi';
 
   @override
-  String get kpSeller => 'Sotuvchi';
-
-  @override
   String get kpBuyer => 'Xaridor';
 
   @override
@@ -717,7 +708,12 @@ class SUz extends S {
 
   @override
   String get kpPreparing =>
-      'Sotuvchi KP tayyorlayapti — odatda 1 ish kuni. Tayyor boʻlganda SMS keladi.';
+      'KP tayyorlanmoqda — odatda 1 ish kuni. Tayyor boʻlganda xabar beramiz.';
+
+  @override
+  String kpWaitingCount(int count) {
+    return '$count ta mahsulotga narx tayyorlanmoqda — tayyor boʻlganda xabar beramiz';
+  }
 
   @override
   String get kpExpired => 'KP muddati oʻtgan — yangisini soʻrang';
@@ -729,17 +725,6 @@ class SUz extends S {
   String kpAcceptConfirmBody(String total) {
     return 'Jami $total. Sotuvchi siz bilan bogʻlanib, yetkazish va toʻlovni kelishadi.';
   }
-
-  @override
-  String kpPartial(int count) {
-    return 'Sotuvchi $count ta mahsulotga narx tayyorlayapti — KP toʻliq boʻlganda SMS keladi';
-  }
-
-  @override
-  String get kpIssueNow => 'KP hujjatini hozir olish';
-
-  @override
-  String get kpIssued => 'KP tayyor — narxli mahsulotlar hujjatda';
 
   @override
   String get kpTo => 'Kimga:';
@@ -822,16 +807,384 @@ class SUz extends S {
 
   @override
   String get priceSheetBody =>
-      'Sotuvchi narxni KP orqali 1 ish kuni ichida beradi. Tezroq kerak boʻlsa — qoʻngʻiroq qiling yoki Telegramda yozing.';
+      'Sotuvchi narxni KP orqali 1 ish kuni ichida beradi. Tezroq kerak boʻlsa — sotuvchiga shu yerning oʻzida yozing.';
 
   @override
   String get priceSheetQuote => 'KP olish — narxni 1 ish kunida beramiz';
 
   @override
-  String get priceSheetTelegram => 'Telegramda yozish';
+  String get pushTokenCopied => 'Push tokeni nusxalandi';
 
   @override
-  String priceSheetCall(String store) {
-    return 'Qoʻngʻiroq · $store';
+  String get chatWriteToStore => 'Doʻkonga yozish';
+
+  @override
+  String get chatsTitle => 'Xabarlar';
+
+  @override
+  String get chatsEmptyTitle => 'Hozircha xabar yoʻq';
+
+  @override
+  String get chatsEmptyBody =>
+      'Mahsulot sahifasida «Doʻkonga yozish» ni bosing — sotuvchi javobi shu yerda chiqadi';
+
+  @override
+  String get chatsLoginBody => 'Doʻkonlar bilan yozishish uchun kiring';
+
+  @override
+  String get chatInputHint => 'Xabar yozing…';
+
+  @override
+  String get chatTyping => 'yozmoqda…';
+
+  @override
+  String get chatConnecting => 'ulanmoqda…';
+
+  @override
+  String get chatAboutProduct => 'Shu mahsulot haqida';
+
+  @override
+  String get chatEmptyTitle => 'Savolingizni yozing';
+
+  @override
+  String get chatEmptyBody => 'Sotuvchi javob berganda bildirishnoma keladi';
+
+  @override
+  String get chatQuickPrice => 'Narxi qancha boʻladi?';
+
+  @override
+  String get chatQuickStock => 'Omborda bormi?';
+
+  @override
+  String get chatQuickDelivery => 'Yetkazib berish qancha vaqt oladi?';
+
+  @override
+  String get chatFailed => 'Yuborilmadi — qayta yuborish uchun bosing';
+
+  @override
+  String get chatUnavailable => 'Chat tez orada ishga tushadi';
+
+  @override
+  String get chatYou => 'Siz: ';
+
+  @override
+  String get chatToday => 'Bugun';
+
+  @override
+  String get chatYesterday => 'Kecha';
+
+  @override
+  String get chatProductMsg => 'Mahsulot haqida savol';
+
+  @override
+  String get statusPacking => 'Yigʻilmoqda';
+
+  @override
+  String get statusReady => 'Yigʻildi';
+
+  @override
+  String get statusInProgress => 'Usta ishlayapti';
+
+  @override
+  String get trackTitle => 'Buyurtma holati';
+
+  @override
+  String get trackCreated => 'Qabul qilindi';
+
+  @override
+  String get trackPacking => 'Yigʻilmoqda';
+
+  @override
+  String get trackReady => 'Yigʻildi';
+
+  @override
+  String get trackShipping => 'Yoʻlda';
+
+  @override
+  String get trackInProgress => 'Usta ishlayapti';
+
+  @override
+  String get trackDone => 'Yakunlandi';
+
+  @override
+  String get trackCancelled => 'Bekor qilindi';
+
+  @override
+  String get trackCourier => 'Kuryer';
+
+  @override
+  String get trackCourierAssigned =>
+      'Kuryer tayinlandi — tez orada yoʻlga chiqadi';
+
+  @override
+  String trackEta(int min) {
+    return '~$min daqiqa';
   }
+
+  @override
+  String get trackStale =>
+      'Kuryer joylashuvi bir necha daqiqadan beri yangilanmagan';
+
+  @override
+  String trackCash(String sum) {
+    return 'Kuryerga $sum tayyorlab qoʻying';
+  }
+
+  @override
+  String get trackDelivered => 'Yetkazildi';
+
+  @override
+  String get trackCall => 'Qoʻngʻiroq';
+
+  @override
+  String get jobTitle => 'Usta xizmati';
+
+  @override
+  String get jobWarrantyTitle => 'Kafolat boʻyicha tashrif';
+
+  @override
+  String get jobPending => 'Usta tayinlanmoqda';
+
+  @override
+  String get jobAssigned => 'Usta tayinlandi';
+
+  @override
+  String get jobAccepted => 'Usta tasdiqladi';
+
+  @override
+  String get jobOnTheWay => 'Usta yoʻlda';
+
+  @override
+  String get jobArrived => 'Usta yetib keldi';
+
+  @override
+  String get jobInProgress => 'Ish bajarilmoqda';
+
+  @override
+  String get jobCompleted => 'Bajarildi';
+
+  @override
+  String get jobFailed => 'Bajarilmadi';
+
+  @override
+  String get jobCancelled => 'Bekor qilindi';
+
+  @override
+  String get jobTime => 'Vaqt';
+
+  @override
+  String get jobTimeProposed => 'Usta tasdiqlashini kuting';
+
+  @override
+  String get jobTimeConfirmed => 'Tasdiqlangan';
+
+  @override
+  String get jobRescheduled => 'Usta boshqa vaqt taklif qildi';
+
+  @override
+  String get jobTimeAccept => 'Qabul qilaman';
+
+  @override
+  String get jobTimeReject => 'Boshqa vaqt kerak';
+
+  @override
+  String get jobTimeRejected => 'Usta siz bilan bogʻlanadi';
+
+  @override
+  String get jobCode => 'Isbot kodi';
+
+  @override
+  String get jobCodeHint => 'Ish tugagach, ustaga shu kodni ayting';
+
+  @override
+  String get jobPriceTitle => 'Usta yangi narx taklif qildi';
+
+  @override
+  String jobPriceWas(String sum) {
+    return 'Buyurtmada: $sum';
+  }
+
+  @override
+  String jobPriceRejectNote(String sum) {
+    return 'Rad etsangiz, faqat chiqish haqi olinadi: $sum';
+  }
+
+  @override
+  String get jobPriceAccept => 'Roziman';
+
+  @override
+  String get jobPriceReject => 'Rozi emasman';
+
+  @override
+  String get jobPriceAccepted => 'Narx tasdiqlandi';
+
+  @override
+  String get jobPriceRejected => 'Narx rad etildi';
+
+  @override
+  String get jobCancel => 'Xizmatni bekor qilish';
+
+  @override
+  String get jobCancelConfirm => 'Xizmat bekor qilinsinmi?';
+
+  @override
+  String get jobCancelDone => 'Xizmat bekor qilindi';
+
+  @override
+  String jobWarrantyUntil(String date) {
+    return 'Kafolat $date gacha';
+  }
+
+  @override
+  String get jobWarrantyClaim => 'Kafolat boʻyicha murojaat';
+
+  @override
+  String get jobWarrantyHint => 'Nima boʻldi? Qisqacha yozing';
+
+  @override
+  String get jobWarrantySent => 'Murojaat yuborildi — usta bogʻlanadi';
+
+  @override
+  String get jobRate => 'Ishni baholang';
+
+  @override
+  String get jobRateHint => 'Izoh (ixtiyoriy)';
+
+  @override
+  String get jobRateSend => 'Yuborish';
+
+  @override
+  String get jobRated => 'Rahmat! Bahoyingiz qabul qilindi';
+
+  @override
+  String get jobYourRating => 'Sizning bahoyingiz';
+
+  @override
+  String get jobPhotosAfter => 'Bajarilgan ish';
+
+  @override
+  String get servicesTitle => 'Xizmatlar';
+
+  @override
+  String get servicesHome => 'Oʻrnatish va servis';
+
+  @override
+  String get servicesAll => 'Hammasi';
+
+  @override
+  String get servicesEmpty => 'Bu hududda hozircha xizmat yoʻq';
+
+  @override
+  String get servicesEmptyBody =>
+      'Boshqa tuman yoki xizmat turini tanlab koʻring';
+
+  @override
+  String get serviceArea => 'Hudud';
+
+  @override
+  String get serviceAreaPick => 'Hududni tanlang';
+
+  @override
+  String get serviceAreaWhole => 'Butun hudud';
+
+  @override
+  String serviceFrom(String sum) {
+    return '$sum dan';
+  }
+
+  @override
+  String get serviceByQuote => 'Narxi kelishiladi';
+
+  @override
+  String serviceWarranty(int months) {
+    return 'Kafolat $months oy';
+  }
+
+  @override
+  String serviceDuration(int min) {
+    return '~$min daqiqa';
+  }
+
+  @override
+  String serviceVisitFee(String sum) {
+    return 'Chiqish haqi $sum';
+  }
+
+  @override
+  String serviceJobsDone(int count) {
+    return '$count ta ish bajarilgan';
+  }
+
+  @override
+  String get serviceFromNote =>
+      'Yakuniy narxni usta joyida aytadi — siz ilovada tasdiqlaysiz';
+
+  @override
+  String get serviceQuoteNote => 'Narxni hamkor alohida hisoblab yuboradi';
+
+  @override
+  String get serviceChooseVariant => 'Variantni tanlang';
+
+  @override
+  String get serviceOrder => 'Buyurtma berish';
+
+  @override
+  String get serviceAskPrice => 'Narx soʻrash';
+
+  @override
+  String get serviceAbout => 'Xizmat haqida';
+
+  @override
+  String get serviceCheckoutTitle => 'Xizmatga buyurtma';
+
+  @override
+  String get serviceWhere => 'Qayerga';
+
+  @override
+  String get serviceWhen => 'Qachon qulay';
+
+  @override
+  String get serviceWhenNote =>
+      'Usta vaqtni tasdiqlaydi yoki boshqasini taklif qiladi';
+
+  @override
+  String get serviceDistrictRequired => 'Tumanni tanlang';
+
+  @override
+  String get serviceBooked => 'Buyurtma qabul qilindi';
+
+  @override
+  String get serviceNotInArea => 'Bu hamkor tanlangan hududda ishlamaydi';
+
+  @override
+  String get serviceToday => 'Bugun';
+
+  @override
+  String get serviceTomorrow => 'Ertaga';
+
+  @override
+  String get installTitle => 'Oʻrnatib berish';
+
+  @override
+  String get installNote => 'Doʻkon ustasi tovar yetib kelgach oʻrnatadi';
+
+  @override
+  String installFor(String name) {
+    return '$name uchun';
+  }
+
+  @override
+  String get installVisit => 'Oʻrnatish vaqti';
+
+  @override
+  String get serviceQty => 'Miqdori';
+
+  @override
+  String get serviceTimeWindow => 'Vaqt oraligʻi';
+
+  @override
+  String get serviceSummary => 'Buyurtma';
+
+  @override
+  String get serviceTimeRequired => 'Qulay vaqtni tanlang';
 }

@@ -1,3 +1,4 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -8,9 +9,12 @@ import '../../core/config.dart';
 import '../../core/providers.dart';
 import '../../core/theme/tokens.dart';
 import '../../core/widgets/buttons.dart';
+import '../../core/widgets/feedback.dart';
 import '../../core/widgets/phone_input.dart';
 import '../../l10n/app_localizations.dart';
 import '../catalog/ui/widgets.dart' show Skeleton;
+import '../chat/chat_providers.dart';
+import '../chat/ui/chat_widgets.dart' show UnreadBadge;
 import '../onboarding/language_screen.dart';
 
 class ProfileTab extends ConsumerWidget {
@@ -48,6 +52,12 @@ class ProfileTab extends ConsumerWidget {
             ),
           const SizedBox(height: Space.xl),
           _Group(children: [
+            _Row(
+              icon: Icons.forum_outlined,
+              title: s.chatsTitle,
+              badge: ref.watch(chatUnreadProvider),
+              onTap: () => context.push('/chats'),
+            ),
             _Row(
               icon: Icons.favorite_border_rounded,
               title: s.favoritesTitle,
@@ -100,7 +110,21 @@ class ProfileTab extends ConsumerWidget {
             ]),
           ],
           const SizedBox(height: Space.xl),
-          Center(child: Text(s.version(AppConfig.appVersion), style: context.text.bodySmall)),
+          // Uzoq bosilsa — push tokeni nusxalanadi (Firebase'dan sinov xabari yuborish uchun).
+          Center(
+            child: GestureDetector(
+              onLongPress: () async {
+                final token = await FirebaseMessaging.instance.getToken();
+                if (token == null || !context.mounted) return;
+                await Clipboard.setData(ClipboardData(text: token));
+                if (context.mounted) showSnack(context, s.pushTokenCopied, icon: Icons.copy_rounded);
+              },
+              child: Padding(
+                padding: const EdgeInsets.all(8),
+                child: Text(s.version(AppConfig.appVersion), style: context.text.bodySmall),
+              ),
+            ),
+          ),
         ],
       ),
     );
@@ -297,8 +321,17 @@ class _Group extends StatelessWidget {
 }
 
 class _Row extends StatelessWidget {
-  const _Row({required this.icon, required this.title, this.value, this.subtitle, this.onTap, this.danger = false});
+  const _Row({
+    required this.icon,
+    required this.title,
+    this.value,
+    this.subtitle,
+    this.onTap,
+    this.danger = false,
+    this.badge = 0,
+  });
   final IconData icon;
+  final int badge;
   final String title;
   final String? value;
   final String? subtitle;
@@ -331,6 +364,7 @@ class _Row extends StatelessWidget {
             ),
             if (value != null)
               Text(value!, style: context.text.bodyMedium),
+            if (badge > 0) UnreadBadge(count: badge),
             if (!danger) ...[
               const SizedBox(width: 4),
               Icon(Icons.chevron_right_rounded, color: c.textTertiary),

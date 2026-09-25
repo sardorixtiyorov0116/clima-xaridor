@@ -11,6 +11,8 @@ import '../../../l10n/app_localizations.dart';
 import '../catalog_providers.dart';
 import '../data/models.dart';
 import 'widgets.dart';
+import '../../services/services_providers.dart';
+import '../../services/ui/service_widgets.dart';
 
 class HomeTab extends ConsumerWidget {
   const HomeTab({super.key});
@@ -20,6 +22,7 @@ class HomeTab extends ConsumerWidget {
     ref.invalidate(bannersProvider);
     ref.invalidate(usdRateProvider);
     ref.invalidate(categoriesProvider);
+    ref.invalidate(serviceCategoriesProvider);
     await ref.read(productsProvider.future).catchError((_) => <Product>[]);
   }
 
@@ -43,6 +46,8 @@ class HomeTab extends ConsumerWidget {
             else if (bannersAsync.isLoading)
               const SliverToBoxAdapter(child: _BannerSkeleton()),
             const SliverToBoxAdapter(child: _CategoryStrip()),
+            // Xizmatlar (№39): o'rnatish, tozalash, ta'mir — turlar qatori.
+            const SliverToBoxAdapter(child: HomeServicesStrip()),
             ...products.when(
               loading: () => [
                 _title(context, s.homeNew),

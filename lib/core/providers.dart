@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../features/auth/data/auth_repository.dart';
 import '../features/auth/data/session.dart';
 import 'api/api_client.dart';
+import 'push/push_service.dart';
 import 'storage/app_storage.dart';
 
 /// `main()` da ochiladi va override qilinadi.
@@ -19,6 +20,8 @@ class SessionController extends Notifier<Session?> {
     await ref.read(storageProvider).writeSession(s);
     ref.read(profileProvider.notifier).set(profile);
     state = s;
+    // Kirgandan keyin push ruxsati va qurilma tokeni.
+    ref.read(pushServiceProvider).onSignedIn();
   }
 
   Future<String?>? _refreshing;
@@ -40,6 +43,7 @@ class SessionController extends Notifier<Session?> {
   Future<void> signOut({bool callBackend = true}) async {
     final s = state;
     if (s == null) return;
+    if (callBackend) await ref.read(pushServiceProvider).onSigningOut(s);
     state = null;
     ref.read(profileProvider.notifier).set(null);
     await ref.read(storageProvider).clearSession();

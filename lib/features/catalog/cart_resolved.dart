@@ -15,7 +15,7 @@ class ResolvedLine {
     if (variant != null) return variant!.price ?? model?.price;
     if (model != null) return model!.price;
     if (product.models.isEmpty && product.minUsd != null) {
-      return Price(product.minUsd!, saleUsd: product.minSaleUsd);
+      return Price(product.minUsd!, saleUsd: product.minSaleUsd, uzs: product.minUzs, saleUzs: product.minSaleUzs);
     }
     return null;
   }

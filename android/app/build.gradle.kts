@@ -4,6 +4,8 @@ plugins {
     id("com.android.application")
     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id("dev.flutter.flutter-gradle-plugin")
+    // Firebase (push): android/app/google-services.json
+    id("com.google.gms.google-services")
 }
 
 // Imzo kaliti git'ga kirmaydi: android/key.properties + android/climavent-upload.jks.
@@ -21,6 +23,8 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
+        // flutter_local_notifications talab qiladi
+        isCoreLibraryDesugaringEnabled = true
     }
 
     defaultConfig {
@@ -63,4 +67,8 @@ kotlin {
 
 flutter {
     source = "../.."
+}
+
+dependencies {
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.5")
 }

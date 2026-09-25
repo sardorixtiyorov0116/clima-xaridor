@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "52423018966",
+    "project_id": "climavent-8887",
+    "storage_bucket": "climavent-8887.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:52423018966:android:bdc834210394cd78683c77",
+        "android_client_info": {
+          "package_name": "uz.climavent.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKzWZeF3tttymPZ7EHn20ItQzHiMDKUrk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:52423018966:android:8096c7c8f5730045683c77",
+        "android_client_info": {
+          "package_name": "uz.climavent.hamkor"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKzWZeF3tttymPZ7EHn20ItQzHiMDKUrk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

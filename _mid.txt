@@ -1,0 +1,112 @@
+/// Tepadagi rekvizitlar chizig'i: chapda Climavent logosi va nomi, o'ngda
+/// telefon · e-pochta/sayt · manzil. Blank hamma do'kon uchun bir xil.
+pw.Widget _letterhead(
+  KpSeller s,
+  pw.MemoryImage? logo,
+  pw.MemoryImage? wordmark,
+  ({pw.MemoryImage phone, pw.MemoryImage mail, pw.MemoryImage pin}) icons,
+) {
+  pw.Widget row(pw.MemoryImage icon, String text) => pw.Padding(
+    padding: const pw.EdgeInsets.only(bottom: 5),
+    child: pw.Row(
+      crossAxisAlignment: pw.CrossAxisAlignment.center,
+      children: [
+        pw.Image(icon, width: 15, height: 15),
+        pw.SizedBox(width: 7),
+        pw.Expanded(
+          child: pw.Text(
+            text,
+            style: const pw.TextStyle(fontSize: 8.5, color: _navy),
+          ),
+        ),
+      ],
+    ),
+  );
+  final contacts = <pw.Widget>[
+    if (s.phone != null) row(icons.phone, s.phone!),
+    if (s.email != null || s.website != null)
+      row(icons.mail, [s.email, s.website].whereType<String>().join(', ')),
+    if (s.address != null)
+      row(icons.pin, [if (s.legal.isNotEmpty) s.legal, s.address].join(', ')),
+  ];
+  return pw.Column(
+    children: [
+      pw.Row(
+        crossAxisAlignment: pw.CrossAxisAlignment.center,
+        children: [
+          pw.Expanded(
+            flex: 5,
+            child: pw.Row(
+              children: [
+                if (logo != null) pw.Image(logo, width: 44, height: 44),
+                if (logo != null) pw.SizedBox(width: 8),
+                if (wordmark != null)
+                  pw.Image(wordmark, height: 26)
+                else
+                  pw.Flexible(
+                    child: pw.Text(
+                      s.name,
+                      style: pw.TextStyle(
+                        fontSize: 22,
+                        fontWeight: pw.FontWeight.bold,
+                        color: _navy,
+                      ),
+                    ),
+                  ),
+              ],
+            ),
+          ),
+          pw.SizedBox(width: 12),
+          pw.Expanded(
+            flex: 5,
+            child: pw.Column(
+              crossAxisAlignment: pw.CrossAxisAlignment.start,
+              children: contacts,
+            ),
+          ),
+        ],
+      ),
+      pw.SizedBox(height: 8),
+      pw.Container(height: 1.2, color: _navy),
+    ],
+  );
+}
+
+/// «№ 77/1 · от 21.09.2026 г.» chapda, «Руководителю · KOMPANIYA» o'ngda.
+pw.Widget _addressLine(S s, Order order, Quote q) {
+  final to = order.companyName ?? order.recipientName;
+  final bold = pw.TextStyle(fontSize: 10, fontWeight: pw.FontWeight.bold);
+  return pw.Row(
+    crossAxisAlignment: pw.CrossAxisAlignment.start,
+    mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
+    children: [
+      pw.Column(
+        crossAxisAlignment: pw.CrossAxisAlignment.start,
+        children: [
+          pw.Text('№ ${order.id}/${q.version}', style: bold),
+          pw.Text(s.kpDated(_d(q.sentAt ?? order.createdAt)), style: bold),
+        ],
+      ),
+      if (to != null)
+        pw.Container(
+          width: 220,
+          child: pw.Column(
+            crossAxisAlignment: pw.CrossAxisAlignment.start,
+            children: [
+              pw.Text(
+                order.companyName != null ? s.kpToHead : s.kpTo,
+                style: bold,
+              ),
+              pw.Text(to, style: bold),
+              if (order.companyTin != null)
+                pw.Text(
+                  '${s.companyTin}: ${order.companyTin}',
+                  style: const pw.TextStyle(fontSize: 9),
+                ),
+            ],
+          ),
+        ),
+    ],
+  );
+}
+

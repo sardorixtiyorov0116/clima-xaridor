@@ -30,6 +30,11 @@ class CatalogRepository {
     return _list(r).map(Product.fromJson).where((p) => p.id > 0).toList();
   }
 
+  /// Do'kon rekvizitlari (yuridik nom, STIR, manzil, e-pochta, sayt) — KP blanki uchun.
+  /// `products/all` ichidagi `store` qisqartirilgan: unda faqat nom, logo va telefon bor.
+  Future<List<Store>> stores() async =>
+      _list(await _api.getPublic('/stores/all')).map(Store.fromJson).whereType<Store>().toList();
+
   Future<Product> product(int id) async {
     final r = await _api.getPublic('/products/one/$id');
     final m = r['data'] is Map<String, dynamic> ? r['data'] as Map<String, dynamic> : r;

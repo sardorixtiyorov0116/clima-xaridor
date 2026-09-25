@@ -4,6 +4,8 @@ abstract final class AppConfig {
     'API_BASE',
     defaultValue: 'https://climavent-back-production.up.railway.app/api',
   );
+  /// Socket.IO serveri — API bilan bir xost, `/api` prefiksisiz (backend №34).
+  static final socketBase = apiBase.replaceFirst(RegExp(r'/api/?$'), '');
   static const siteBase = 'https://climavent.uz';
   static const termsUrl = '$siteBase/foydalanish-shartlari';
   static const privacyUrl = '$siteBase/maxfiylik';
@@ -25,7 +27,7 @@ abstract final class AppConfig {
         _ => null,
       };
 
-  static const appVersion = '0.4.1';
+  static const appVersion = '0.6.0';
 
   /// Backend kodni qayta yuborishga ruxsat beradigan oraliq (saytdagidek).
   static const otpResendSeconds = 120;

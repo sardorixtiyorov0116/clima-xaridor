@@ -163,7 +163,6 @@
   "descriptionTitle": "Tavsif",
   "purposeTitle": "Qoʻllanilishi",
   "sellerTitle": "Sotuvchi",
-  "callSeller": "Qoʻngʻiroq",
   "addToCart": "Savatga",
   "chooseModelFirst": "Avval modelni tanlang",
   "addedToCart": "Savatga qoʻshildi",
@@ -199,11 +198,10 @@
   "specPressure": "Bosim",
   "checkoutOrderTitle": "Buyurtmani rasmiylashtirish",
   "checkoutQuoteTitle": "KP soʻrovi",
-  "checkoutQuoteNote": "Sotuvchi narxlarni 1 ish kuni ichida yuboradi. KP tayyor boʻlganda SMS keladi va uni «Buyurtmalar» boʻlimida koʻrasiz.",
+  "checkoutQuoteNote": "Narxlarni 1 ish kuni ichida tayyorlaymiz. KP tayyor boʻlganda xabar beramiz va uni «Buyurtmalar» boʻlimida koʻrasiz.",
   "checkoutLoginTitle": "Davom etish uchun kiring",
   "checkoutLoginBody": "Buyurtma va KP hisobingizga bogʻlanadi — holatini ilovada kuzatasiz",
   "deliveryAddress": "Yetkazish manzili",
-  "deliveryAddressOptional": "Yetkazish manzili (ixtiyoriy)",
   "addressLabel": "Manzil",
   "addressRequired": "Manzilni kiriting yoki xaritada belgilang",
   "addressDetailsLabel": "Kirish, qavat, xonadon, moʻljal",
@@ -301,7 +299,6 @@
   "kpTitle": "Tijorat taklifi",
   "kpDate": "Sana",
   "kpValidUntil": "Amal qiladi",
-  "kpSeller": "Sotuvchi",
   "kpBuyer": "Xaridor",
   "kpColProduct": "Mahsulot",
   "kpColQty": "Soni",
@@ -321,7 +318,15 @@
   "kpRejected": "KP rad etildi",
   "kpRequestAgain": "Yangisini olish",
   "kpRequestedAgain": "Soʻrov sotuvchiga yuborildi",
-  "kpPreparing": "Sotuvchi KP tayyorlayapti — odatda 1 ish kuni. Tayyor boʻlganda SMS keladi.",
+  "kpPreparing": "KP tayyorlanmoqda — odatda 1 ish kuni. Tayyor boʻlganda xabar beramiz.",
+  "kpWaitingCount": "{count} ta mahsulotga narx tayyorlanmoqda — tayyor boʻlganda xabar beramiz",
+  "@kpWaitingCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "kpExpired": "KP muddati oʻtgan — yangisini soʻrang",
   "statusQuoteExpired": "KP eskirgan",
   "kpAcceptConfirmBody": "Jami {total}. Sotuvchi siz bilan bogʻlanib, yetkazish va toʻlovni kelishadi.",
@@ -332,16 +337,6 @@
       }
     }
   },
-  "kpPartial": "Sotuvchi {count} ta mahsulotga narx tayyorlayapti — KP toʻliq boʻlganda SMS keladi",
-  "@kpPartial": {
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
-  "kpIssueNow": "KP hujjatini hozir olish",
-  "kpIssued": "KP tayyor — narxli mahsulotlar hujjatda",
   "kpTo": "Kimga:",
   "kpToHead": "Rahbariga:",
   "kpColName": "Nomi",
@@ -425,15 +420,199 @@
       }
     }
   },
-  "priceSheetBody": "Sotuvchi narxni KP orqali 1 ish kuni ichida beradi. Tezroq kerak boʻlsa — qoʻngʻiroq qiling yoki Telegramda yozing.",
+  "priceSheetBody": "Sotuvchi narxni KP orqali 1 ish kuni ichida beradi. Tezroq kerak boʻlsa — sotuvchiga shu yerning oʻzida yozing.",
   "priceSheetQuote": "KP olish — narxni 1 ish kunida beramiz",
-  "priceSheetTelegram": "Telegramda yozish",
-  "priceSheetCall": "Qoʻngʻiroq · {store}",
-  "@priceSheetCall": {
+  "pushTokenCopied": "Push tokeni nusxalandi",
+  "chatWriteToStore": "Doʻkonga yozish",
+  "chatsTitle": "Xabarlar",
+  "chatsEmptyTitle": "Hozircha xabar yoʻq",
+  "chatsEmptyBody": "Mahsulot sahifasida «Doʻkonga yozish» ni bosing — sotuvchi javobi shu yerda chiqadi",
+  "chatsLoginBody": "Doʻkonlar bilan yozishish uchun kiring",
+  "chatInputHint": "Xabar yozing…",
+  "chatTyping": "yozmoqda…",
+  "chatConnecting": "ulanmoqda…",
+  "chatAboutProduct": "Shu mahsulot haqida",
+  "chatEmptyTitle": "Savolingizni yozing",
+  "chatEmptyBody": "Sotuvchi javob berganda bildirishnoma keladi",
+  "chatQuickPrice": "Narxi qancha boʻladi?",
+  "chatQuickStock": "Omborda bormi?",
+  "chatQuickDelivery": "Yetkazib berish qancha vaqt oladi?",
+  "chatFailed": "Yuborilmadi — qayta yuborish uchun bosing",
+  "chatUnavailable": "Chat tez orada ishga tushadi",
+  "chatYou": "Siz: ",
+  "chatToday": "Bugun",
+  "chatYesterday": "Kecha",
+  "chatProductMsg": "Mahsulot haqida savol",
+  "statusPacking": "Yigʻilmoqda",
+  "statusReady": "Yigʻildi",
+  "statusInProgress": "Usta ishlayapti",
+  "trackTitle": "Buyurtma holati",
+  "trackCreated": "Qabul qilindi",
+  "trackPacking": "Yigʻilmoqda",
+  "trackReady": "Yigʻildi",
+  "trackShipping": "Yoʻlda",
+  "trackInProgress": "Usta ishlayapti",
+  "trackDone": "Yakunlandi",
+  "trackCancelled": "Bekor qilindi",
+  "trackCourier": "Kuryer",
+  "trackCourierAssigned": "Kuryer tayinlandi — tez orada yoʻlga chiqadi",
+  "trackEta": "~{min} daqiqa",
+  "@trackEta": {
     "placeholders": {
-      "store": {
+      "min": {
+        "type": "int"
+      }
+    }
+  },
+  "trackStale": "Kuryer joylashuvi bir necha daqiqadan beri yangilanmagan",
+  "trackCash": "Kuryerga {sum} tayyorlab qoʻying",
+  "@trackCash": {
+    "placeholders": {
+      "sum": {
         "type": "String"
       }
     }
-  }
+  },
+  "trackDelivered": "Yetkazildi",
+  "trackCall": "Qoʻngʻiroq",
+  "jobTitle": "Usta xizmati",
+  "jobWarrantyTitle": "Kafolat boʻyicha tashrif",
+  "jobPending": "Usta tayinlanmoqda",
+  "jobAssigned": "Usta tayinlandi",
+  "jobAccepted": "Usta tasdiqladi",
+  "jobOnTheWay": "Usta yoʻlda",
+  "jobArrived": "Usta yetib keldi",
+  "jobInProgress": "Ish bajarilmoqda",
+  "jobCompleted": "Bajarildi",
+  "jobFailed": "Bajarilmadi",
+  "jobCancelled": "Bekor qilindi",
+  "jobTime": "Vaqt",
+  "jobTimeProposed": "Usta tasdiqlashini kuting",
+  "jobTimeConfirmed": "Tasdiqlangan",
+  "jobRescheduled": "Usta boshqa vaqt taklif qildi",
+  "jobTimeAccept": "Qabul qilaman",
+  "jobTimeReject": "Boshqa vaqt kerak",
+  "jobTimeRejected": "Usta siz bilan bogʻlanadi",
+  "jobCode": "Isbot kodi",
+  "jobCodeHint": "Ish tugagach, ustaga shu kodni ayting",
+  "jobPriceTitle": "Usta yangi narx taklif qildi",
+  "jobPriceWas": "Buyurtmada: {sum}",
+  "@jobPriceWas": {
+    "placeholders": {
+      "sum": {
+        "type": "String"
+      }
+    }
+  },
+  "jobPriceRejectNote": "Rad etsangiz, faqat chiqish haqi olinadi: {sum}",
+  "@jobPriceRejectNote": {
+    "placeholders": {
+      "sum": {
+        "type": "String"
+      }
+    }
+  },
+  "jobPriceAccept": "Roziman",
+  "jobPriceReject": "Rozi emasman",
+  "jobPriceAccepted": "Narx tasdiqlandi",
+  "jobPriceRejected": "Narx rad etildi",
+  "jobCancel": "Xizmatni bekor qilish",
+  "jobCancelConfirm": "Xizmat bekor qilinsinmi?",
+  "jobCancelDone": "Xizmat bekor qilindi",
+  "jobWarrantyUntil": "Kafolat {date} gacha",
+  "@jobWarrantyUntil": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "jobWarrantyClaim": "Kafolat boʻyicha murojaat",
+  "jobWarrantyHint": "Nima boʻldi? Qisqacha yozing",
+  "jobWarrantySent": "Murojaat yuborildi — usta bogʻlanadi",
+  "jobRate": "Ishni baholang",
+  "jobRateHint": "Izoh (ixtiyoriy)",
+  "jobRateSend": "Yuborish",
+  "jobRated": "Rahmat! Bahoyingiz qabul qilindi",
+  "jobYourRating": "Sizning bahoyingiz",
+  "jobPhotosAfter": "Bajarilgan ish",
+  "servicesTitle": "Xizmatlar",
+  "servicesHome": "Oʻrnatish va servis",
+  "servicesAll": "Hammasi",
+  "servicesEmpty": "Bu hududda hozircha xizmat yoʻq",
+  "servicesEmptyBody": "Boshqa tuman yoki xizmat turini tanlab koʻring",
+  "serviceArea": "Hudud",
+  "serviceAreaPick": "Hududni tanlang",
+  "serviceAreaWhole": "Butun hudud",
+  "serviceFrom": "{sum} dan",
+  "@serviceFrom": {
+    "placeholders": {
+      "sum": {
+        "type": "String"
+      }
+    }
+  },
+  "serviceByQuote": "Narxi kelishiladi",
+  "serviceWarranty": "Kafolat {months} oy",
+  "@serviceWarranty": {
+    "placeholders": {
+      "months": {
+        "type": "int"
+      }
+    }
+  },
+  "serviceDuration": "~{min} daqiqa",
+  "@serviceDuration": {
+    "placeholders": {
+      "min": {
+        "type": "int"
+      }
+    }
+  },
+  "serviceVisitFee": "Chiqish haqi {sum}",
+  "@serviceVisitFee": {
+    "placeholders": {
+      "sum": {
+        "type": "String"
+      }
+    }
+  },
+  "serviceJobsDone": "{count} ta ish bajarilgan",
+  "@serviceJobsDone": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "serviceFromNote": "Yakuniy narxni usta joyida aytadi — siz ilovada tasdiqlaysiz",
+  "serviceQuoteNote": "Narxni hamkor alohida hisoblab yuboradi",
+  "serviceChooseVariant": "Variantni tanlang",
+  "serviceOrder": "Buyurtma berish",
+  "serviceAskPrice": "Narx soʻrash",
+  "serviceAbout": "Xizmat haqida",
+  "serviceCheckoutTitle": "Xizmatga buyurtma",
+  "serviceWhere": "Qayerga",
+  "serviceWhen": "Qachon qulay",
+  "serviceWhenNote": "Usta vaqtni tasdiqlaydi yoki boshqasini taklif qiladi",
+  "serviceDistrictRequired": "Tumanni tanlang",
+  "serviceBooked": "Buyurtma qabul qilindi",
+  "serviceNotInArea": "Bu hamkor tanlangan hududda ishlamaydi",
+  "serviceToday": "Bugun",
+  "serviceTomorrow": "Ertaga",
+  "installTitle": "Oʻrnatib berish",
+  "installNote": "Doʻkon ustasi tovar yetib kelgach oʻrnatadi",
+  "installFor": "{name} uchun",
+  "@installFor": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "installVisit": "Oʻrnatish vaqti",
+  "serviceQty": "Miqdori",
+  "serviceTimeWindow": "Vaqt oraligʻi",
+  "serviceSummary": "Buyurtma",
+  "serviceTimeRequired": "Qulay vaqtni tanlang"
 }

@@ -40,9 +40,9 @@ class CartTab extends ConsumerWidget {
     final resolved = ref.watch(resolvedCartProvider);
     final priced = resolved.where((r) => r.price != null);
     final unpriced = resolved.length - priced.length;
-    final total = rate == null
-        ? null
-        : priced.fold<int>(0, (a, r) => a + rate.toSum(r.price!.effective) * r.line.qty);
+    // So'mdagi narx backenddan tayyor keladi (№37); kurs faqat eski javoblar uchun zaxira.
+    final sums = [for (final r in priced) (r.price!.effectiveSum(rate), r.line.qty)];
+    final total = sums.any((x) => x.$1 == null) ? null : sums.fold<int>(0, (a, x) => a + x.$1! * x.$2);
 
     return Scaffold(
       appBar: AppBar(
@@ -118,7 +118,7 @@ class CartTab extends ConsumerWidget {
                                   Text(r.subtitle!, style: context.text.bodySmall),
                                 ],
                                 const SizedBox(height: 6),
-                                PriceView(usd: r.price?.usd, saleUsd: r.price?.saleUsd),
+                                PriceView.of(r.price),
                                 const SizedBox(height: Space.sm),
                                 QtyStepper(
                                   compact: true,

@@ -741,12 +741,6 @@ abstract class S {
   /// **'Sotuvchi'**
   String get sellerTitle;
 
-  /// No description provided for @callSeller.
-  ///
-  /// In uz, this message translates to:
-  /// **'Qoʻngʻiroq'**
-  String get callSeller;
-
   /// No description provided for @addToCart.
   ///
   /// In uz, this message translates to:
@@ -918,7 +912,7 @@ abstract class S {
   /// No description provided for @checkoutQuoteNote.
   ///
   /// In uz, this message translates to:
-  /// **'Sotuvchi narxlarni 1 ish kuni ichida yuboradi. KP tayyor boʻlganda SMS keladi va uni «Buyurtmalar» boʻlimida koʻrasiz.'**
+  /// **'Narxlarni 1 ish kuni ichida tayyorlaymiz. KP tayyor boʻlganda xabar beramiz va uni «Buyurtmalar» boʻlimida koʻrasiz.'**
   String get checkoutQuoteNote;
 
   /// No description provided for @checkoutLoginTitle.
@@ -938,12 +932,6 @@ abstract class S {
   /// In uz, this message translates to:
   /// **'Yetkazish manzili'**
   String get deliveryAddress;
-
-  /// No description provided for @deliveryAddressOptional.
-  ///
-  /// In uz, this message translates to:
-  /// **'Yetkazish manzili (ixtiyoriy)'**
-  String get deliveryAddressOptional;
 
   /// No description provided for @addressLabel.
   ///
@@ -1275,12 +1263,6 @@ abstract class S {
   /// **'Amal qiladi'**
   String get kpValidUntil;
 
-  /// No description provided for @kpSeller.
-  ///
-  /// In uz, this message translates to:
-  /// **'Sotuvchi'**
-  String get kpSeller;
-
   /// No description provided for @kpBuyer.
   ///
   /// In uz, this message translates to:
@@ -1398,8 +1380,14 @@ abstract class S {
   /// No description provided for @kpPreparing.
   ///
   /// In uz, this message translates to:
-  /// **'Sotuvchi KP tayyorlayapti — odatda 1 ish kuni. Tayyor boʻlganda SMS keladi.'**
+  /// **'KP tayyorlanmoqda — odatda 1 ish kuni. Tayyor boʻlganda xabar beramiz.'**
   String get kpPreparing;
+
+  /// No description provided for @kpWaitingCount.
+  ///
+  /// In uz, this message translates to:
+  /// **'{count} ta mahsulotga narx tayyorlanmoqda — tayyor boʻlganda xabar beramiz'**
+  String kpWaitingCount(int count);
 
   /// No description provided for @kpExpired.
   ///
@@ -1418,24 +1406,6 @@ abstract class S {
   /// In uz, this message translates to:
   /// **'Jami {total}. Sotuvchi siz bilan bogʻlanib, yetkazish va toʻlovni kelishadi.'**
   String kpAcceptConfirmBody(String total);
-
-  /// No description provided for @kpPartial.
-  ///
-  /// In uz, this message translates to:
-  /// **'Sotuvchi {count} ta mahsulotga narx tayyorlayapti — KP toʻliq boʻlganda SMS keladi'**
-  String kpPartial(int count);
-
-  /// No description provided for @kpIssueNow.
-  ///
-  /// In uz, this message translates to:
-  /// **'KP hujjatini hozir olish'**
-  String get kpIssueNow;
-
-  /// No description provided for @kpIssued.
-  ///
-  /// In uz, this message translates to:
-  /// **'KP tayyor — narxli mahsulotlar hujjatda'**
-  String get kpIssued;
 
   /// No description provided for @kpTo.
   ///
@@ -1566,7 +1536,7 @@ abstract class S {
   /// No description provided for @priceSheetBody.
   ///
   /// In uz, this message translates to:
-  /// **'Sotuvchi narxni KP orqali 1 ish kuni ichida beradi. Tezroq kerak boʻlsa — qoʻngʻiroq qiling yoki Telegramda yozing.'**
+  /// **'Sotuvchi narxni KP orqali 1 ish kuni ichida beradi. Tezroq kerak boʻlsa — sotuvchiga shu yerning oʻzida yozing.'**
   String get priceSheetBody;
 
   /// No description provided for @priceSheetQuote.
@@ -1575,17 +1545,701 @@ abstract class S {
   /// **'KP olish — narxni 1 ish kunida beramiz'**
   String get priceSheetQuote;
 
-  /// No description provided for @priceSheetTelegram.
+  /// No description provided for @pushTokenCopied.
   ///
   /// In uz, this message translates to:
-  /// **'Telegramda yozish'**
-  String get priceSheetTelegram;
+  /// **'Push tokeni nusxalandi'**
+  String get pushTokenCopied;
 
-  /// No description provided for @priceSheetCall.
+  /// No description provided for @chatWriteToStore.
   ///
   /// In uz, this message translates to:
-  /// **'Qoʻngʻiroq · {store}'**
-  String priceSheetCall(String store);
+  /// **'Doʻkonga yozish'**
+  String get chatWriteToStore;
+
+  /// No description provided for @chatsTitle.
+  ///
+  /// In uz, this message translates to:
+  /// **'Xabarlar'**
+  String get chatsTitle;
+
+  /// No description provided for @chatsEmptyTitle.
+  ///
+  /// In uz, this message translates to:
+  /// **'Hozircha xabar yoʻq'**
+  String get chatsEmptyTitle;
+
+  /// No description provided for @chatsEmptyBody.
+  ///
+  /// In uz, this message translates to:
+  /// **'Mahsulot sahifasida «Doʻkonga yozish» ni bosing — sotuvchi javobi shu yerda chiqadi'**
+  String get chatsEmptyBody;
+
+  /// No description provided for @chatsLoginBody.
+  ///
+  /// In uz, this message translates to:
+  /// **'Doʻkonlar bilan yozishish uchun kiring'**
+  String get chatsLoginBody;
+
+  /// No description provided for @chatInputHint.
+  ///
+  /// In uz, this message translates to:
+  /// **'Xabar yozing…'**
+  String get chatInputHint;
+
+  /// No description provided for @chatTyping.
+  ///
+  /// In uz, this message translates to:
+  /// **'yozmoqda…'**
+  String get chatTyping;
+
+  /// No description provided for @chatConnecting.
+  ///
+  /// In uz, this message translates to:
+  /// **'ulanmoqda…'**
+  String get chatConnecting;
+
+  /// No description provided for @chatAboutProduct.
+  ///
+  /// In uz, this message translates to:
+  /// **'Shu mahsulot haqida'**
+  String get chatAboutProduct;
+
+  /// No description provided for @chatEmptyTitle.
+  ///
+  /// In uz, this message translates to:
+  /// **'Savolingizni yozing'**
+  String get chatEmptyTitle;
+
+  /// No description provided for @chatEmptyBody.
+  ///
+  /// In uz, this message translates to:
+  /// **'Sotuvchi javob berganda bildirishnoma keladi'**
+  String get chatEmptyBody;
+
+  /// No description provided for @chatQuickPrice.
+  ///
+  /// In uz, this message translates to:
+  /// **'Narxi qancha boʻladi?'**
+  String get chatQuickPrice;
+
+  /// No description provided for @chatQuickStock.
+  ///
+  /// In uz, this message translates to:
+  /// **'Omborda bormi?'**
+  String get chatQuickStock;
+
+  /// No description provided for @chatQuickDelivery.
+  ///
+  /// In uz, this message translates to:
+  /// **'Yetkazib berish qancha vaqt oladi?'**
+  String get chatQuickDelivery;
+
+  /// No description provided for @chatFailed.
+  ///
+  /// In uz, this message translates to:
+  /// **'Yuborilmadi — qayta yuborish uchun bosing'**
+  String get chatFailed;
+
+  /// No description provided for @chatUnavailable.
+  ///
+  /// In uz, this message translates to:
+  /// **'Chat tez orada ishga tushadi'**
+  String get chatUnavailable;
+
+  /// No description provided for @chatYou.
+  ///
+  /// In uz, this message translates to:
+  /// **'Siz: '**
+  String get chatYou;
+
+  /// No description provided for @chatToday.
+  ///
+  /// In uz, this message translates to:
+  /// **'Bugun'**
+  String get chatToday;
+
+  /// No description provided for @chatYesterday.
+  ///
+  /// In uz, this message translates to:
+  /// **'Kecha'**
+  String get chatYesterday;
+
+  /// No description provided for @chatProductMsg.
+  ///
+  /// In uz, this message translates to:
+  /// **'Mahsulot haqida savol'**
+  String get chatProductMsg;
+
+  /// No description provided for @statusPacking.
+  ///
+  /// In uz, this message translates to:
+  /// **'Yigʻilmoqda'**
+  String get statusPacking;
+
+  /// No description provided for @statusReady.
+  ///
+  /// In uz, this message translates to:
+  /// **'Yigʻildi'**
+  String get statusReady;
+
+  /// No description provided for @statusInProgress.
+  ///
+  /// In uz, this message translates to:
+  /// **'Usta ishlayapti'**
+  String get statusInProgress;
+
+  /// No description provided for @trackTitle.
+  ///
+  /// In uz, this message translates to:
+  /// **'Buyurtma holati'**
+  String get trackTitle;
+
+  /// No description provided for @trackCreated.
+  ///
+  /// In uz, this message translates to:
+  /// **'Qabul qilindi'**
+  String get trackCreated;
+
+  /// No description provided for @trackPacking.
+  ///
+  /// In uz, this message translates to:
+  /// **'Yigʻilmoqda'**
+  String get trackPacking;
+
+  /// No description provided for @trackReady.
+  ///
+  /// In uz, this message translates to:
+  /// **'Yigʻildi'**
+  String get trackReady;
+
+  /// No description provided for @trackShipping.
+  ///
+  /// In uz, this message translates to:
+  /// **'Yoʻlda'**
+  String get trackShipping;
+
+  /// No description provided for @trackInProgress.
+  ///
+  /// In uz, this message translates to:
+  /// **'Usta ishlayapti'**
+  String get trackInProgress;
+
+  /// No description provided for @trackDone.
+  ///
+  /// In uz, this message translates to:
+  /// **'Yakunlandi'**
+  String get trackDone;
+
+  /// No description provided for @trackCancelled.
+  ///
+  /// In uz, this message translates to:
+  /// **'Bekor qilindi'**
+  String get trackCancelled;
+
+  /// No description provided for @trackCourier.
+  ///
+  /// In uz, this message translates to:
+  /// **'Kuryer'**
+  String get trackCourier;
+
+  /// No description provided for @trackCourierAssigned.
+  ///
+  /// In uz, this message translates to:
+  /// **'Kuryer tayinlandi — tez orada yoʻlga chiqadi'**
+  String get trackCourierAssigned;
+
+  /// No description provided for @trackEta.
+  ///
+  /// In uz, this message translates to:
+  /// **'~{min} daqiqa'**
+  String trackEta(int min);
+
+  /// No description provided for @trackStale.
+  ///
+  /// In uz, this message translates to:
+  /// **'Kuryer joylashuvi bir necha daqiqadan beri yangilanmagan'**
+  String get trackStale;
+
+  /// No description provided for @trackCash.
+  ///
+  /// In uz, this message translates to:
+  /// **'Kuryerga {sum} tayyorlab qoʻying'**
+  String trackCash(String sum);
+
+  /// No description provided for @trackDelivered.
+  ///
+  /// In uz, this message translates to:
+  /// **'Yetkazildi'**
+  String get trackDelivered;
+
+  /// No description provided for @trackCall.
+  ///
+  /// In uz, this message translates to:
+  /// **'Qoʻngʻiroq'**
+  String get trackCall;
+
+  /// No description provided for @jobTitle.
+  ///
+  /// In uz, this message translates to:
+  /// **'Usta xizmati'**
+  String get jobTitle;
+
+  /// No description provided for @jobWarrantyTitle.
+  ///
+  /// In uz, this message translates to:
+  /// **'Kafolat boʻyicha tashrif'**
+  String get jobWarrantyTitle;
+
+  /// No description provided for @jobPending.
+  ///
+  /// In uz, this message translates to:
+  /// **'Usta tayinlanmoqda'**
+  String get jobPending;
+
+  /// No description provided for @jobAssigned.
+  ///
+  /// In uz, this message translates to:
+  /// **'Usta tayinlandi'**
+  String get jobAssigned;
+
+  /// No description provided for @jobAccepted.
+  ///
+  /// In uz, this message translates to:
+  /// **'Usta tasdiqladi'**
+  String get jobAccepted;
+
+  /// No description provided for @jobOnTheWay.
+  ///
+  /// In uz, this message translates to:
+  /// **'Usta yoʻlda'**
+  String get jobOnTheWay;
+
+  /// No description provided for @jobArrived.
+  ///
+  /// In uz, this message translates to:
+  /// **'Usta yetib keldi'**
+  String get jobArrived;
+
+  /// No description provided for @jobInProgress.
+  ///
+  /// In uz, this message translates to:
+  /// **'Ish bajarilmoqda'**
+  String get jobInProgress;
+
+  /// No description provided for @jobCompleted.
+  ///
+  /// In uz, this message translates to:
+  /// **'Bajarildi'**
+  String get jobCompleted;
+
+  /// No description provided for @jobFailed.
+  ///
+  /// In uz, this message translates to:
+  /// **'Bajarilmadi'**
+  String get jobFailed;
+
+  /// No description provided for @jobCancelled.
+  ///
+  /// In uz, this message translates to:
+  /// **'Bekor qilindi'**
+  String get jobCancelled;
+
+  /// No description provided for @jobTime.
+  ///
+  /// In uz, this message translates to:
+  /// **'Vaqt'**
+  String get jobTime;
+
+  /// No description provided for @jobTimeProposed.
+  ///
+  /// In uz, this message translates to:
+  /// **'Usta tasdiqlashini kuting'**
+  String get jobTimeProposed;
+
+  /// No description provided for @jobTimeConfirmed.
+  ///
+  /// In uz, this message translates to:
+  /// **'Tasdiqlangan'**
+  String get jobTimeConfirmed;
+
+  /// No description provided for @jobRescheduled.
+  ///
+  /// In uz, this message translates to:
+  /// **'Usta boshqa vaqt taklif qildi'**
+  String get jobRescheduled;
+
+  /// No description provided for @jobTimeAccept.
+  ///
+  /// In uz, this message translates to:
+  /// **'Qabul qilaman'**
+  String get jobTimeAccept;
+
+  /// No description provided for @jobTimeReject.
+  ///
+  /// In uz, this message translates to:
+  /// **'Boshqa vaqt kerak'**
+  String get jobTimeReject;
+
+  /// No description provided for @jobTimeRejected.
+  ///
+  /// In uz, this message translates to:
+  /// **'Usta siz bilan bogʻlanadi'**
+  String get jobTimeRejected;
+
+  /// No description provided for @jobCode.
+  ///
+  /// In uz, this message translates to:
+  /// **'Isbot kodi'**
+  String get jobCode;
+
+  /// No description provided for @jobCodeHint.
+  ///
+  /// In uz, this message translates to:
+  /// **'Ish tugagach, ustaga shu kodni ayting'**
+  String get jobCodeHint;
+
+  /// No description provided for @jobPriceTitle.
+  ///
+  /// In uz, this message translates to:
+  /// **'Usta yangi narx taklif qildi'**
+  String get jobPriceTitle;
+
+  /// No description provided for @jobPriceWas.
+  ///
+  /// In uz, this message translates to:
+  /// **'Buyurtmada: {sum}'**
+  String jobPriceWas(String sum);
+
+  /// No description provided for @jobPriceRejectNote.
+  ///
+  /// In uz, this message translates to:
+  /// **'Rad etsangiz, faqat chiqish haqi olinadi: {sum}'**
+  String jobPriceRejectNote(String sum);
+
+  /// No description provided for @jobPriceAccept.
+  ///
+  /// In uz, this message translates to:
+  /// **'Roziman'**
+  String get jobPriceAccept;
+
+  /// No description provided for @jobPriceReject.
+  ///
+  /// In uz, this message translates to:
+  /// **'Rozi emasman'**
+  String get jobPriceReject;
+
+  /// No description provided for @jobPriceAccepted.
+  ///
+  /// In uz, this message translates to:
+  /// **'Narx tasdiqlandi'**
+  String get jobPriceAccepted;
+
+  /// No description provided for @jobPriceRejected.
+  ///
+  /// In uz, this message translates to:
+  /// **'Narx rad etildi'**
+  String get jobPriceRejected;
+
+  /// No description provided for @jobCancel.
+  ///
+  /// In uz, this message translates to:
+  /// **'Xizmatni bekor qilish'**
+  String get jobCancel;
+
+  /// No description provided for @jobCancelConfirm.
+  ///
+  /// In uz, this message translates to:
+  /// **'Xizmat bekor qilinsinmi?'**
+  String get jobCancelConfirm;
+
+  /// No description provided for @jobCancelDone.
+  ///
+  /// In uz, this message translates to:
+  /// **'Xizmat bekor qilindi'**
+  String get jobCancelDone;
+
+  /// No description provided for @jobWarrantyUntil.
+  ///
+  /// In uz, this message translates to:
+  /// **'Kafolat {date} gacha'**
+  String jobWarrantyUntil(String date);
+
+  /// No description provided for @jobWarrantyClaim.
+  ///
+  /// In uz, this message translates to:
+  /// **'Kafolat boʻyicha murojaat'**
+  String get jobWarrantyClaim;
+
+  /// No description provided for @jobWarrantyHint.
+  ///
+  /// In uz, this message translates to:
+  /// **'Nima boʻldi? Qisqacha yozing'**
+  String get jobWarrantyHint;
+
+  /// No description provided for @jobWarrantySent.
+  ///
+  /// In uz, this message translates to:
+  /// **'Murojaat yuborildi — usta bogʻlanadi'**
+  String get jobWarrantySent;
+
+  /// No description provided for @jobRate.
+  ///
+  /// In uz, this message translates to:
+  /// **'Ishni baholang'**
+  String get jobRate;
+
+  /// No description provided for @jobRateHint.
+  ///
+  /// In uz, this message translates to:
+  /// **'Izoh (ixtiyoriy)'**
+  String get jobRateHint;
+
+  /// No description provided for @jobRateSend.
+  ///
+  /// In uz, this message translates to:
+  /// **'Yuborish'**
+  String get jobRateSend;
+
+  /// No description provided for @jobRated.
+  ///
+  /// In uz, this message translates to:
+  /// **'Rahmat! Bahoyingiz qabul qilindi'**
+  String get jobRated;
+
+  /// No description provided for @jobYourRating.
+  ///
+  /// In uz, this message translates to:
+  /// **'Sizning bahoyingiz'**
+  String get jobYourRating;
+
+  /// No description provided for @jobPhotosAfter.
+  ///
+  /// In uz, this message translates to:
+  /// **'Bajarilgan ish'**
+  String get jobPhotosAfter;
+
+  /// No description provided for @servicesTitle.
+  ///
+  /// In uz, this message translates to:
+  /// **'Xizmatlar'**
+  String get servicesTitle;
+
+  /// No description provided for @servicesHome.
+  ///
+  /// In uz, this message translates to:
+  /// **'Oʻrnatish va servis'**
+  String get servicesHome;
+
+  /// No description provided for @servicesAll.
+  ///
+  /// In uz, this message translates to:
+  /// **'Hammasi'**
+  String get servicesAll;
+
+  /// No description provided for @servicesEmpty.
+  ///
+  /// In uz, this message translates to:
+  /// **'Bu hududda hozircha xizmat yoʻq'**
+  String get servicesEmpty;
+
+  /// No description provided for @servicesEmptyBody.
+  ///
+  /// In uz, this message translates to:
+  /// **'Boshqa tuman yoki xizmat turini tanlab koʻring'**
+  String get servicesEmptyBody;
+
+  /// No description provided for @serviceArea.
+  ///
+  /// In uz, this message translates to:
+  /// **'Hudud'**
+  String get serviceArea;
+
+  /// No description provided for @serviceAreaPick.
+  ///
+  /// In uz, this message translates to:
+  /// **'Hududni tanlang'**
+  String get serviceAreaPick;
+
+  /// No description provided for @serviceAreaWhole.
+  ///
+  /// In uz, this message translates to:
+  /// **'Butun hudud'**
+  String get serviceAreaWhole;
+
+  /// No description provided for @serviceFrom.
+  ///
+  /// In uz, this message translates to:
+  /// **'{sum} dan'**
+  String serviceFrom(String sum);
+
+  /// No description provided for @serviceByQuote.
+  ///
+  /// In uz, this message translates to:
+  /// **'Narxi kelishiladi'**
+  String get serviceByQuote;
+
+  /// No description provided for @serviceWarranty.
+  ///
+  /// In uz, this message translates to:
+  /// **'Kafolat {months} oy'**
+  String serviceWarranty(int months);
+
+  /// No description provided for @serviceDuration.
+  ///
+  /// In uz, this message translates to:
+  /// **'~{min} daqiqa'**
+  String serviceDuration(int min);
+
+  /// No description provided for @serviceVisitFee.
+  ///
+  /// In uz, this message translates to:
+  /// **'Chiqish haqi {sum}'**
+  String serviceVisitFee(String sum);
+
+  /// No description provided for @serviceJobsDone.
+  ///
+  /// In uz, this message translates to:
+  /// **'{count} ta ish bajarilgan'**
+  String serviceJobsDone(int count);
+
+  /// No description provided for @serviceFromNote.
+  ///
+  /// In uz, this message translates to:
+  /// **'Yakuniy narxni usta joyida aytadi — siz ilovada tasdiqlaysiz'**
+  String get serviceFromNote;
+
+  /// No description provided for @serviceQuoteNote.
+  ///
+  /// In uz, this message translates to:
+  /// **'Narxni hamkor alohida hisoblab yuboradi'**
+  String get serviceQuoteNote;
+
+  /// No description provided for @serviceChooseVariant.
+  ///
+  /// In uz, this message translates to:
+  /// **'Variantni tanlang'**
+  String get serviceChooseVariant;
+
+  /// No description provided for @serviceOrder.
+  ///
+  /// In uz, this message translates to:
+  /// **'Buyurtma berish'**
+  String get serviceOrder;
+
+  /// No description provided for @serviceAskPrice.
+  ///
+  /// In uz, this message translates to:
+  /// **'Narx soʻrash'**
+  String get serviceAskPrice;
+
+  /// No description provided for @serviceAbout.
+  ///
+  /// In uz, this message translates to:
+  /// **'Xizmat haqida'**
+  String get serviceAbout;
+
+  /// No description provided for @serviceCheckoutTitle.
+  ///
+  /// In uz, this message translates to:
+  /// **'Xizmatga buyurtma'**
+  String get serviceCheckoutTitle;
+
+  /// No description provided for @serviceWhere.
+  ///
+  /// In uz, this message translates to:
+  /// **'Qayerga'**
+  String get serviceWhere;
+
+  /// No description provided for @serviceWhen.
+  ///
+  /// In uz, this message translates to:
+  /// **'Qachon qulay'**
+  String get serviceWhen;
+
+  /// No description provided for @serviceWhenNote.
+  ///
+  /// In uz, this message translates to:
+  /// **'Usta vaqtni tasdiqlaydi yoki boshqasini taklif qiladi'**
+  String get serviceWhenNote;
+
+  /// No description provided for @serviceDistrictRequired.
+  ///
+  /// In uz, this message translates to:
+  /// **'Tumanni tanlang'**
+  String get serviceDistrictRequired;
+
+  /// No description provided for @serviceBooked.
+  ///
+  /// In uz, this message translates to:
+  /// **'Buyurtma qabul qilindi'**
+  String get serviceBooked;
+
+  /// No description provided for @serviceNotInArea.
+  ///
+  /// In uz, this message translates to:
+  /// **'Bu hamkor tanlangan hududda ishlamaydi'**
+  String get serviceNotInArea;
+
+  /// No description provided for @serviceToday.
+  ///
+  /// In uz, this message translates to:
+  /// **'Bugun'**
+  String get serviceToday;
+
+  /// No description provided for @serviceTomorrow.
+  ///
+  /// In uz, this message translates to:
+  /// **'Ertaga'**
+  String get serviceTomorrow;
+
+  /// No description provided for @installTitle.
+  ///
+  /// In uz, this message translates to:
+  /// **'Oʻrnatib berish'**
+  String get installTitle;
+
+  /// No description provided for @installNote.
+  ///
+  /// In uz, this message translates to:
+  /// **'Doʻkon ustasi tovar yetib kelgach oʻrnatadi'**
+  String get installNote;
+
+  /// No description provided for @installFor.
+  ///
+  /// In uz, this message translates to:
+  /// **'{name} uchun'**
+  String installFor(String name);
+
+  /// No description provided for @installVisit.
+  ///
+  /// In uz, this message translates to:
+  /// **'Oʻrnatish vaqti'**
+  String get installVisit;
+
+  /// No description provided for @serviceQty.
+  ///
+  /// In uz, this message translates to:
+  /// **'Miqdori'**
+  String get serviceQty;
+
+  /// No description provided for @serviceTimeWindow.
+  ///
+  /// In uz, this message translates to:
+  /// **'Vaqt oraligʻi'**
+  String get serviceTimeWindow;
+
+  /// No description provided for @serviceSummary.
+  ///
+  /// In uz, this message translates to:
+  /// **'Buyurtma'**
+  String get serviceSummary;
+
+  /// No description provided for @serviceTimeRequired.
+  ///
+  /// In uz, this message translates to:
+  /// **'Qulay vaqtni tanlang'**
+  String get serviceTimeRequired;
 }
 
 class _SDelegate extends LocalizationsDelegate<S> {

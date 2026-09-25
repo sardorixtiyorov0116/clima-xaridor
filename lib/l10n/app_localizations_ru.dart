@@ -355,9 +355,6 @@ class SRu extends S {
   String get sellerTitle => 'Продавец';
 
   @override
-  String get callSeller => 'Позвонить';
-
-  @override
   String get addToCart => 'В корзину';
 
   @override
@@ -447,7 +444,7 @@ class SRu extends S {
 
   @override
   String get checkoutQuoteNote =>
-      'Продавец пришлёт цены в течение 1 рабочего дня. Когда КП будет готово, придёт SMS — оно появится в разделе «Заказы».';
+      'Подготовим цены в течение 1 рабочего дня. Сообщим, когда КП будет готово — оно появится в разделе «Заказы».';
 
   @override
   String get checkoutLoginTitle => 'Войдите, чтобы продолжить';
@@ -458,9 +455,6 @@ class SRu extends S {
 
   @override
   String get deliveryAddress => 'Адрес доставки';
-
-  @override
-  String get deliveryAddressOptional => 'Адрес доставки (необязательно)';
 
   @override
   String get addressLabel => 'Адрес';
@@ -646,9 +640,6 @@ class SRu extends S {
   String get kpValidUntil => 'Действует до';
 
   @override
-  String get kpSeller => 'Продавец';
-
-  @override
   String get kpBuyer => 'Покупатель';
 
   @override
@@ -708,7 +699,18 @@ class SRu extends S {
 
   @override
   String get kpPreparing =>
-      'Продавец готовит КП — обычно 1 рабочий день. Когда будет готово, придёт SMS.';
+      'КП готовится — обычно 1 рабочий день. Сообщим, когда будет готово.';
+
+  @override
+  String kpWaitingCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Готовим цены по $count позициям',
+      one: 'Готовим цену по 1 позиции',
+    );
+    return '$_temp0 — сообщим, когда будет готово';
+  }
 
   @override
   String get kpExpired => 'Срок КП истёк — запросите новое';
@@ -720,17 +722,6 @@ class SRu extends S {
   String kpAcceptConfirmBody(String total) {
     return 'Итого $total. Продавец свяжется с вами, чтобы согласовать доставку и оплату.';
   }
-
-  @override
-  String kpPartial(int count) {
-    return 'Продавец готовит цены на $count товаров — когда КП будет полным, придёт SMS';
-  }
-
-  @override
-  String get kpIssueNow => 'Получить КП сейчас';
-
-  @override
-  String get kpIssued => 'КП готово — товары с ценой в документе';
 
   @override
   String get kpTo => 'Кому:';
@@ -813,16 +804,380 @@ class SRu extends S {
 
   @override
   String get priceSheetBody =>
-      'Продавец сообщит цену в КП в течение 1 рабочего дня. Если нужно быстрее — позвоните или напишите в Telegram.';
+      'Продавец сообщит цену в КП в течение 1 рабочего дня. Если нужно быстрее — напишите продавцу прямо здесь.';
 
   @override
   String get priceSheetQuote => 'Получить КП — цена за 1 рабочий день';
 
   @override
-  String get priceSheetTelegram => 'Написать в Telegram';
+  String get pushTokenCopied => 'Push-токен скопирован';
 
   @override
-  String priceSheetCall(String store) {
-    return 'Позвонить · $store';
+  String get chatWriteToStore => 'Написать магазину';
+
+  @override
+  String get chatsTitle => 'Сообщения';
+
+  @override
+  String get chatsEmptyTitle => 'Сообщений пока нет';
+
+  @override
+  String get chatsEmptyBody =>
+      'Нажмите «Написать магазину» на странице товара — ответ продавца появится здесь';
+
+  @override
+  String get chatsLoginBody => 'Войдите, чтобы переписываться с магазинами';
+
+  @override
+  String get chatInputHint => 'Напишите сообщение…';
+
+  @override
+  String get chatTyping => 'печатает…';
+
+  @override
+  String get chatConnecting => 'подключение…';
+
+  @override
+  String get chatAboutProduct => 'Об этом товаре';
+
+  @override
+  String get chatEmptyTitle => 'Задайте вопрос';
+
+  @override
+  String get chatEmptyBody => 'Когда продавец ответит, придёт уведомление';
+
+  @override
+  String get chatQuickPrice => 'Какая будет цена?';
+
+  @override
+  String get chatQuickStock => 'Есть в наличии?';
+
+  @override
+  String get chatQuickDelivery => 'Сколько займёт доставка?';
+
+  @override
+  String get chatFailed => 'Не отправлено — нажмите, чтобы повторить';
+
+  @override
+  String get chatUnavailable => 'Чат скоро заработает';
+
+  @override
+  String get chatYou => 'Вы: ';
+
+  @override
+  String get chatToday => 'Сегодня';
+
+  @override
+  String get chatYesterday => 'Вчера';
+
+  @override
+  String get chatProductMsg => 'Вопрос о товаре';
+
+  @override
+  String get statusPacking => 'Собирается';
+
+  @override
+  String get statusReady => 'Собран';
+
+  @override
+  String get statusInProgress => 'Мастер работает';
+
+  @override
+  String get trackTitle => 'Статус заказа';
+
+  @override
+  String get trackCreated => 'Принят';
+
+  @override
+  String get trackPacking => 'Собирается';
+
+  @override
+  String get trackReady => 'Собран';
+
+  @override
+  String get trackShipping => 'В пути';
+
+  @override
+  String get trackInProgress => 'Мастер работает';
+
+  @override
+  String get trackDone => 'Завершён';
+
+  @override
+  String get trackCancelled => 'Отменён';
+
+  @override
+  String get trackCourier => 'Курьер';
+
+  @override
+  String get trackCourierAssigned => 'Курьер назначен — скоро выедет';
+
+  @override
+  String trackEta(int min) {
+    return '~$min мин';
   }
+
+  @override
+  String get trackStale => 'Местоположение курьера давно не обновлялось';
+
+  @override
+  String trackCash(String sum) {
+    return 'Подготовьте курьеру $sum';
+  }
+
+  @override
+  String get trackDelivered => 'Доставлено';
+
+  @override
+  String get trackCall => 'Позвонить';
+
+  @override
+  String get jobTitle => 'Услуга мастера';
+
+  @override
+  String get jobWarrantyTitle => 'Гарантийный выезд';
+
+  @override
+  String get jobPending => 'Назначаем мастера';
+
+  @override
+  String get jobAssigned => 'Мастер назначен';
+
+  @override
+  String get jobAccepted => 'Мастер подтвердил';
+
+  @override
+  String get jobOnTheWay => 'Мастер в пути';
+
+  @override
+  String get jobArrived => 'Мастер на месте';
+
+  @override
+  String get jobInProgress => 'Идёт работа';
+
+  @override
+  String get jobCompleted => 'Выполнено';
+
+  @override
+  String get jobFailed => 'Не выполнено';
+
+  @override
+  String get jobCancelled => 'Отменено';
+
+  @override
+  String get jobTime => 'Время';
+
+  @override
+  String get jobTimeProposed => 'Ждём подтверждения';
+
+  @override
+  String get jobTimeConfirmed => 'Подтверждено';
+
+  @override
+  String get jobRescheduled => 'Мастер предложил другое время';
+
+  @override
+  String get jobTimeAccept => 'Подходит';
+
+  @override
+  String get jobTimeReject => 'Нужно другое время';
+
+  @override
+  String get jobTimeRejected => 'Мастер свяжется с вами';
+
+  @override
+  String get jobCode => 'Код подтверждения';
+
+  @override
+  String get jobCodeHint => 'Назовите код мастеру после работы';
+
+  @override
+  String get jobPriceTitle => 'Мастер предложил новую цену';
+
+  @override
+  String jobPriceWas(String sum) {
+    return 'В заказе: $sum';
+  }
+
+  @override
+  String jobPriceRejectNote(String sum) {
+    return 'Если откажетесь, оплачивается только выезд: $sum';
+  }
+
+  @override
+  String get jobPriceAccept => 'Согласен';
+
+  @override
+  String get jobPriceReject => 'Не согласен';
+
+  @override
+  String get jobPriceAccepted => 'Цена подтверждена';
+
+  @override
+  String get jobPriceRejected => 'Цена отклонена';
+
+  @override
+  String get jobCancel => 'Отменить услугу';
+
+  @override
+  String get jobCancelConfirm => 'Отменить услугу?';
+
+  @override
+  String get jobCancelDone => 'Услуга отменена';
+
+  @override
+  String jobWarrantyUntil(String date) {
+    return 'Гарантия до $date';
+  }
+
+  @override
+  String get jobWarrantyClaim => 'Обращение по гарантии';
+
+  @override
+  String get jobWarrantyHint => 'Что случилось? Опишите кратко';
+
+  @override
+  String get jobWarrantySent => 'Обращение отправлено — мастер свяжется';
+
+  @override
+  String get jobRate => 'Оцените работу';
+
+  @override
+  String get jobRateHint => 'Комментарий (необязательно)';
+
+  @override
+  String get jobRateSend => 'Отправить';
+
+  @override
+  String get jobRated => 'Спасибо! Оценка принята';
+
+  @override
+  String get jobYourRating => 'Ваша оценка';
+
+  @override
+  String get jobPhotosAfter => 'Выполненная работа';
+
+  @override
+  String get servicesTitle => 'Услуги';
+
+  @override
+  String get servicesHome => 'Установка и сервис';
+
+  @override
+  String get servicesAll => 'Все';
+
+  @override
+  String get servicesEmpty => 'В этом районе пока нет услуг';
+
+  @override
+  String get servicesEmptyBody => 'Попробуйте другой район или тип услуги';
+
+  @override
+  String get serviceArea => 'Район';
+
+  @override
+  String get serviceAreaPick => 'Выберите район';
+
+  @override
+  String get serviceAreaWhole => 'Весь регион';
+
+  @override
+  String serviceFrom(String sum) {
+    return 'от $sum';
+  }
+
+  @override
+  String get serviceByQuote => 'Цена по запросу';
+
+  @override
+  String serviceWarranty(int months) {
+    return 'Гарантия $months мес';
+  }
+
+  @override
+  String serviceDuration(int min) {
+    return '~$min мин';
+  }
+
+  @override
+  String serviceVisitFee(String sum) {
+    return 'Выезд $sum';
+  }
+
+  @override
+  String serviceJobsDone(int count) {
+    return 'Выполнено работ: $count';
+  }
+
+  @override
+  String get serviceFromNote =>
+      'Итоговую цену мастер назовёт на месте — вы подтвердите в приложении';
+
+  @override
+  String get serviceQuoteNote => 'Цену партнёр рассчитает и пришлёт';
+
+  @override
+  String get serviceChooseVariant => 'Выберите вариант';
+
+  @override
+  String get serviceOrder => 'Заказать';
+
+  @override
+  String get serviceAskPrice => 'Запросить цену';
+
+  @override
+  String get serviceAbout => 'Об услуге';
+
+  @override
+  String get serviceCheckoutTitle => 'Заказ услуги';
+
+  @override
+  String get serviceWhere => 'Куда';
+
+  @override
+  String get serviceWhen => 'Когда удобно';
+
+  @override
+  String get serviceWhenNote => 'Мастер подтвердит время или предложит другое';
+
+  @override
+  String get serviceDistrictRequired => 'Выберите район';
+
+  @override
+  String get serviceBooked => 'Заказ принят';
+
+  @override
+  String get serviceNotInArea => 'Партнёр не работает в выбранном районе';
+
+  @override
+  String get serviceToday => 'Сегодня';
+
+  @override
+  String get serviceTomorrow => 'Завтра';
+
+  @override
+  String get installTitle => 'Установка';
+
+  @override
+  String get installNote => 'Мастер магазина установит после доставки';
+
+  @override
+  String installFor(String name) {
+    return 'Для $name';
+  }
+
+  @override
+  String get installVisit => 'Время установки';
+
+  @override
+  String get serviceQty => 'Количество';
+
+  @override
+  String get serviceTimeWindow => 'Интервал';
+
+  @override
+  String get serviceSummary => 'Заказ';
+
+  @override
+  String get serviceTimeRequired => 'Выберите удобное время';
 }

@@ -357,9 +357,6 @@ class SEn extends S {
   String get sellerTitle => 'Seller';
 
   @override
-  String get callSeller => 'Call';
-
-  @override
   String get addToCart => 'Add to cart';
 
   @override
@@ -448,7 +445,7 @@ class SEn extends S {
 
   @override
   String get checkoutQuoteNote =>
-      'The seller will send prices within 1 business day. You\'ll get an SMS when the quote is ready — it will appear under Orders.';
+      'We will prepare the prices within 1 business day and let you know when the quote is ready — you will find it under Orders.';
 
   @override
   String get checkoutLoginTitle => 'Sign in to continue';
@@ -459,9 +456,6 @@ class SEn extends S {
 
   @override
   String get deliveryAddress => 'Delivery address';
-
-  @override
-  String get deliveryAddressOptional => 'Delivery address (optional)';
 
   @override
   String get addressLabel => 'Address';
@@ -647,9 +641,6 @@ class SEn extends S {
   String get kpValidUntil => 'Valid until';
 
   @override
-  String get kpSeller => 'Seller';
-
-  @override
   String get kpBuyer => 'Buyer';
 
   @override
@@ -709,7 +700,18 @@ class SEn extends S {
 
   @override
   String get kpPreparing =>
-      'The seller is preparing the quote — usually 1 business day. You\'ll get an SMS when it\'s ready.';
+      'Your quote is being prepared — usually 1 business day. We will let you know when it is ready.';
+
+  @override
+  String kpWaitingCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Pricing $count items',
+      one: 'Pricing 1 item',
+    );
+    return '$_temp0 — we will let you know when it is ready';
+  }
 
   @override
   String get kpExpired => 'The quote has expired — request a new one';
@@ -721,17 +723,6 @@ class SEn extends S {
   String kpAcceptConfirmBody(String total) {
     return 'Total $total. The seller will contact you to arrange delivery and payment.';
   }
-
-  @override
-  String kpPartial(int count) {
-    return 'The seller is pricing $count items — you\'ll get an SMS when the quote is complete';
-  }
-
-  @override
-  String get kpIssueNow => 'Get the quote now';
-
-  @override
-  String get kpIssued => 'Quote ready — priced items are in the document';
 
   @override
   String get kpTo => 'To:';
@@ -814,16 +805,388 @@ class SEn extends S {
 
   @override
   String get priceSheetBody =>
-      'The seller will price it in a quote within 1 business day. Need it faster? Call or message on Telegram.';
+      'The seller will price it in a quote within 1 business day. Need it faster? Message the seller right here.';
 
   @override
   String get priceSheetQuote => 'Get a quote — price within 1 business day';
 
   @override
-  String get priceSheetTelegram => 'Message on Telegram';
+  String get pushTokenCopied => 'Push token copied';
 
   @override
-  String priceSheetCall(String store) {
-    return 'Call · $store';
+  String get chatWriteToStore => 'Message the store';
+
+  @override
+  String get chatsTitle => 'Messages';
+
+  @override
+  String get chatsEmptyTitle => 'No messages yet';
+
+  @override
+  String get chatsEmptyBody =>
+      'Tap “Message the store” on a product page — the seller\'s reply will appear here';
+
+  @override
+  String get chatsLoginBody => 'Sign in to message stores';
+
+  @override
+  String get chatInputHint => 'Write a message…';
+
+  @override
+  String get chatTyping => 'typing…';
+
+  @override
+  String get chatConnecting => 'connecting…';
+
+  @override
+  String get chatAboutProduct => 'About this product';
+
+  @override
+  String get chatEmptyTitle => 'Ask a question';
+
+  @override
+  String get chatEmptyBody =>
+      'You\'ll get a notification when the seller replies';
+
+  @override
+  String get chatQuickPrice => 'What would the price be?';
+
+  @override
+  String get chatQuickStock => 'Is it in stock?';
+
+  @override
+  String get chatQuickDelivery => 'How long does delivery take?';
+
+  @override
+  String get chatFailed => 'Not sent — tap to retry';
+
+  @override
+  String get chatUnavailable => 'Chat is coming soon';
+
+  @override
+  String get chatYou => 'You: ';
+
+  @override
+  String get chatToday => 'Today';
+
+  @override
+  String get chatYesterday => 'Yesterday';
+
+  @override
+  String get chatProductMsg => 'Question about a product';
+
+  @override
+  String get statusPacking => 'Packing';
+
+  @override
+  String get statusReady => 'Packed';
+
+  @override
+  String get statusInProgress => 'In progress';
+
+  @override
+  String get trackTitle => 'Order status';
+
+  @override
+  String get trackCreated => 'Received';
+
+  @override
+  String get trackPacking => 'Packing';
+
+  @override
+  String get trackReady => 'Packed';
+
+  @override
+  String get trackShipping => 'On the way';
+
+  @override
+  String get trackInProgress => 'Technician at work';
+
+  @override
+  String get trackDone => 'Completed';
+
+  @override
+  String get trackCancelled => 'Cancelled';
+
+  @override
+  String get trackCourier => 'Courier';
+
+  @override
+  String get trackCourierAssigned =>
+      'A courier is assigned and will head out soon';
+
+  @override
+  String trackEta(int min) {
+    return '~$min min';
   }
+
+  @override
+  String get trackStale =>
+      'The courier\'s location hasn\'t updated for a few minutes';
+
+  @override
+  String trackCash(String sum) {
+    return 'Have $sum ready for the courier';
+  }
+
+  @override
+  String get trackDelivered => 'Delivered';
+
+  @override
+  String get trackCall => 'Call';
+
+  @override
+  String get jobTitle => 'Technician service';
+
+  @override
+  String get jobWarrantyTitle => 'Warranty visit';
+
+  @override
+  String get jobPending => 'Finding a technician';
+
+  @override
+  String get jobAssigned => 'Technician assigned';
+
+  @override
+  String get jobAccepted => 'Technician confirmed';
+
+  @override
+  String get jobOnTheWay => 'Technician on the way';
+
+  @override
+  String get jobArrived => 'Technician has arrived';
+
+  @override
+  String get jobInProgress => 'Work in progress';
+
+  @override
+  String get jobCompleted => 'Completed';
+
+  @override
+  String get jobFailed => 'Not completed';
+
+  @override
+  String get jobCancelled => 'Cancelled';
+
+  @override
+  String get jobTime => 'Time';
+
+  @override
+  String get jobTimeProposed => 'Waiting for confirmation';
+
+  @override
+  String get jobTimeConfirmed => 'Confirmed';
+
+  @override
+  String get jobRescheduled => 'The technician proposed another time';
+
+  @override
+  String get jobTimeAccept => 'Accept';
+
+  @override
+  String get jobTimeReject => 'I need another time';
+
+  @override
+  String get jobTimeRejected => 'The technician will contact you';
+
+  @override
+  String get jobCode => 'Proof code';
+
+  @override
+  String get jobCodeHint =>
+      'Tell the technician this code when the job is done';
+
+  @override
+  String get jobPriceTitle => 'The technician proposed a new price';
+
+  @override
+  String jobPriceWas(String sum) {
+    return 'In the order: $sum';
+  }
+
+  @override
+  String jobPriceRejectNote(String sum) {
+    return 'If you decline, only the visit fee applies: $sum';
+  }
+
+  @override
+  String get jobPriceAccept => 'Accept';
+
+  @override
+  String get jobPriceReject => 'Decline';
+
+  @override
+  String get jobPriceAccepted => 'Price accepted';
+
+  @override
+  String get jobPriceRejected => 'Price declined';
+
+  @override
+  String get jobCancel => 'Cancel service';
+
+  @override
+  String get jobCancelConfirm => 'Cancel this service?';
+
+  @override
+  String get jobCancelDone => 'Service cancelled';
+
+  @override
+  String jobWarrantyUntil(String date) {
+    return 'Warranty until $date';
+  }
+
+  @override
+  String get jobWarrantyClaim => 'Warranty claim';
+
+  @override
+  String get jobWarrantyHint => 'What happened? Describe briefly';
+
+  @override
+  String get jobWarrantySent => 'Claim sent — the technician will contact you';
+
+  @override
+  String get jobRate => 'Rate the work';
+
+  @override
+  String get jobRateHint => 'Comment (optional)';
+
+  @override
+  String get jobRateSend => 'Send';
+
+  @override
+  String get jobRated => 'Thanks! Your rating was saved';
+
+  @override
+  String get jobYourRating => 'Your rating';
+
+  @override
+  String get jobPhotosAfter => 'Finished work';
+
+  @override
+  String get servicesTitle => 'Services';
+
+  @override
+  String get servicesHome => 'Installation and service';
+
+  @override
+  String get servicesAll => 'All';
+
+  @override
+  String get servicesEmpty => 'No services in this area yet';
+
+  @override
+  String get servicesEmptyBody => 'Try another district or service type';
+
+  @override
+  String get serviceArea => 'Area';
+
+  @override
+  String get serviceAreaPick => 'Choose your area';
+
+  @override
+  String get serviceAreaWhole => 'Whole region';
+
+  @override
+  String serviceFrom(String sum) {
+    return 'from $sum';
+  }
+
+  @override
+  String get serviceByQuote => 'Price on request';
+
+  @override
+  String serviceWarranty(int months) {
+    return '$months-month warranty';
+  }
+
+  @override
+  String serviceDuration(int min) {
+    return '~$min min';
+  }
+
+  @override
+  String serviceVisitFee(String sum) {
+    return 'Visit fee $sum';
+  }
+
+  @override
+  String serviceJobsDone(int count) {
+    return '$count jobs done';
+  }
+
+  @override
+  String get serviceFromNote =>
+      'The technician sets the final price on site — you approve it in the app';
+
+  @override
+  String get serviceQuoteNote =>
+      'The partner will calculate and send you a price';
+
+  @override
+  String get serviceChooseVariant => 'Choose a variant';
+
+  @override
+  String get serviceOrder => 'Book';
+
+  @override
+  String get serviceAskPrice => 'Request a price';
+
+  @override
+  String get serviceAbout => 'About';
+
+  @override
+  String get serviceCheckoutTitle => 'Book a service';
+
+  @override
+  String get serviceWhere => 'Where';
+
+  @override
+  String get serviceWhen => 'When';
+
+  @override
+  String get serviceWhenNote =>
+      'The technician confirms or proposes another time';
+
+  @override
+  String get serviceDistrictRequired => 'Choose a district';
+
+  @override
+  String get serviceBooked => 'Booking received';
+
+  @override
+  String get serviceNotInArea =>
+      'This partner doesn\'t work in the selected area';
+
+  @override
+  String get serviceToday => 'Today';
+
+  @override
+  String get serviceTomorrow => 'Tomorrow';
+
+  @override
+  String get installTitle => 'Installation';
+
+  @override
+  String get installNote =>
+      'The store\'s technician installs it after delivery';
+
+  @override
+  String installFor(String name) {
+    return 'For $name';
+  }
+
+  @override
+  String get installVisit => 'Installation time';
+
+  @override
+  String get serviceQty => 'Quantity';
+
+  @override
+  String get serviceTimeWindow => 'Time window';
+
+  @override
+  String get serviceSummary => 'Order';
+
+  @override
+  String get serviceTimeRequired => 'Choose a convenient time';
 }

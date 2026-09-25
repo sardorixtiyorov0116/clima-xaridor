@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import 'core/providers.dart';
+import 'core/push/push_service.dart';
 import 'core/theme/app_theme.dart';
 import 'core/theme/tokens.dart';
 import 'features/auth/data/auth_repository.dart';
@@ -17,6 +18,10 @@ import 'features/catalog/ui/category_screen.dart';
 import 'features/catalog/ui/home_tab.dart';
 import 'features/catalog/ui/product_screen.dart';
 import 'features/catalog/ui/search_screen.dart';
+import 'features/catalog/data/models.dart' show Store;
+import 'features/chat/data/chat_models.dart';
+import 'features/chat/ui/chat_screen.dart';
+import 'features/chat/ui/chats_screen.dart';
 import 'features/onboarding/language_screen.dart';
 import 'features/orders/ui/checkout_done_screen.dart';
 import 'features/orders/ui/checkout_screen.dart';
@@ -26,6 +31,9 @@ import 'features/orders/ui/orders_tab.dart';
 import 'features/onboarding/onboarding_screen.dart';
 import 'features/shell/home_shell.dart';
 import 'features/shell/profile_tab.dart';
+import 'features/services/ui/service_checkout_screen.dart';
+import 'features/services/ui/service_screen.dart';
+import 'features/services/ui/services_screen.dart';
 import 'l10n/app_localizations.dart';
 
 final routerProvider = Provider<GoRouter>((ref) {
@@ -91,6 +99,50 @@ final routerProvider = Provider<GoRouter>((ref) {
         pageBuilder: (_, st) =>
             _slide(st, CategoryScreen(categoryId: int.tryParse(st.pathParameters['id'] ?? '') ?? 0)),
       ),
+      GoRoute(path: '/chats', pageBuilder: (_, st) => _slide(st, const ChatsScreen())),
+      // Xizmatlar (№39): katalog, xizmat sahifasi va buyurtma.
+      GoRoute(
+        path: '/services',
+        pageBuilder: (_, st) => _slide(st, ServicesScreen(category: st.uri.queryParameters['c'])),
+      ),
+      GoRoute(
+        path: '/service/:id',
+        pageBuilder: (_, st) => _slide(
+            st,
+            ServiceScreen(
+              serviceId: int.tryParse(st.pathParameters['id'] ?? '') ?? 0,
+              variantId: int.tryParse(st.uri.queryParameters['v'] ?? ''),
+            )),
+      ),
+      GoRoute(
+        path: '/service/:id/book',
+        pageBuilder: (_, st) => _slide(
+            st,
+            ServiceCheckoutScreen(
+              serviceId: int.tryParse(st.pathParameters['id'] ?? '') ?? 0,
+              variantId: int.tryParse(st.uri.queryParameters['v'] ?? '') ?? 0,
+              qty: (int.tryParse(st.uri.queryParameters['q'] ?? '') ?? 1).clamp(1, 50),
+            )),
+      ),
+      GoRoute(
+        path: '/chat/store/:storeId',
+        pageBuilder: (_, st) => _slide(
+            st,
+            ChatScreen(
+              storeId: int.tryParse(st.pathParameters['storeId'] ?? '') ?? 0,
+              productId: int.tryParse(st.uri.queryParameters['product'] ?? ''),
+              store: st.extra is Store ? st.extra! as Store : null,
+            )),
+      ),
+      GoRoute(
+        path: '/chat/:id',
+        pageBuilder: (_, st) => _slide(
+            st,
+            ChatScreen(
+              chatId: int.tryParse(st.pathParameters['id'] ?? '') ?? 0,
+              initial: st.extra is Chat ? st.extra! as Chat : null,
+            )),
+      ),
       GoRoute(path: '/search', pageBuilder: (_, st) => _fade(st, const SearchScreen())),
       GoRoute(path: '/favorites', pageBuilder: (_, st) => _slide(st, const FavoritesScreen())),
       // Faqat debug: dizaynni backendsiz ko'rish uchun.
@@ -154,6 +206,8 @@ class ClimaventApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final router = ref.watch(routerProvider);
+    // Bir marta ishga tushadi (ichida himoya bor): bildirishnomalar va ularni bosganda sahifa ochish.
+    ref.read(pushServiceProvider).init(router);
     return MaterialApp.router(
       title: 'Climavent',
       debugShowCheckedModeBanner: false,

@@ -61,10 +61,27 @@ class NetImage extends StatelessWidget {
 }
 
 /// Narx: aksiya bo'lsa eski narx ustidan chizilgan; narx yo'q bo'lsa "Narxini bilish".
+///
+/// So'm [uzs] bo'lsa — shu ko'rsatiladi (backend №37, so'mdagi narx kursga bog'liq emas),
+/// bo'lmasa dollar narx joriy kursga ko'paytiriladi.
 class PriceView extends ConsumerWidget {
-  const PriceView({super.key, required this.usd, this.saleUsd, this.from = false, this.big = false});
+  const PriceView({
+    super.key,
+    required this.usd,
+    this.saleUsd,
+    this.uzs,
+    this.saleUzs,
+    this.from = false,
+    this.big = false,
+  });
+
+  PriceView.of(Price? p, {Key? key, bool from = false, bool big = false})
+    : this(key: key, usd: p?.usd, saleUsd: p?.saleUsd, uzs: p?.uzs, saleUzs: p?.saleUzs, from: from, big: big);
+
   final double? usd;
   final double? saleUsd;
+  final int? uzs;
+  final int? saleUzs;
   final bool from;
   final bool big;
 
@@ -80,22 +97,23 @@ class PriceView extends ConsumerWidget {
           style: (big ? context.text.titleLarge : context.text.bodyMedium)
               ?.copyWith(color: c.textSecondary, fontWeight: FontWeight.w600));
     }
-    if (rate == null) {
+    final onSale = saleUsd != null && saleUsd! < usd!;
+    final base = uzs ?? rate?.toSum(usd!);
+    final main = onSale ? (saleUzs ?? rate?.toSum(saleUsd!)) : base;
+    if (main == null || base == null) {
       return Container(
         width: big ? 160 : 90,
         height: big ? 24 : 16,
         decoration: BoxDecoration(color: c.surfaceMuted, borderRadius: BorderRadius.circular(6)),
       );
     }
-    final onSale = saleUsd != null && saleUsd! < usd!;
-    final main = rate.toSum(onSale ? saleUsd! : usd!);
     final text = sumText(context, main);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
         if (onSale)
-          Text(sumText(context, rate.toSum(usd!)),
+          Text(sumText(context, base),
               style: context.text.bodySmall?.copyWith(decoration: TextDecoration.lineThrough)),
         Text(
           from ? s.priceFrom(text) : text,
@@ -232,9 +250,9 @@ class ProductCard extends ConsumerWidget {
                                 ? FittedBox(
                                     fit: BoxFit.scaleDown,
                                     alignment: Alignment.bottomLeft,
-                                    child: PriceView(usd: p.minUsd, saleUsd: p.minSaleUsd, from: p.multiModel),
+                                    child: PriceView(usd: p.minUsd, saleUsd: p.minSaleUsd, uzs: p.minUzs, saleUzs: p.minSaleUzs, from: p.multiModel),
                                   )
-                                // Narxsiz: bosiladigan "Narxini bilish" — KP, qo'ng'iroq, Telegram.
+                                // Narxsiz: bosiladigan "Narxini bilish" — KP yoki sotuvchiga yozish.
                                 : Align(alignment: Alignment.centerLeft, child: PriceRequestChip(product: p)),
                           ),
                         ],
